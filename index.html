@@ -18,18 +18,18 @@ body {
   background: linear-gradient(to right, #0a4ea1 0%, #0a4ea1 60%, #083b82 80%, #062f6a 100%);
   color: white;
   text-align: center;
-  padding: 45px 40px 35px 40px;
+  padding: 22px 40px 18px 40px; /* 50% reduced */
 }
 
 #title-block h1 {
   margin: 0;
-  font-size: 42px;
+  font-size: 38px;
   letter-spacing: 1px;
 }
 
 #title-block p {
   margin-top: 8px;
-  font-size: 16px;
+  font-size: 18px; /* increased */
   opacity: 0.9;
 }
 
@@ -84,7 +84,7 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
-  background: #eef4fb;
+  background: url("images/base.jpg") center/cover no-repeat; /* base image */
 }
 
 /* PREVIEW IMAGES */
@@ -144,9 +144,7 @@ a.menu-link {
   <div id="image-panel">
     <div id="mask"></div>
 
-    <!-- THIS NOW MATCHES YOUR REPO -->
     <div id="bio" class="preview" style="background-image:url('images/BMR_Headshot.jpg')"></div>
-
     <div id="tech" class="preview"></div>
     <div id="write" class="preview"></div>
     <div id="consult" class="preview"></div>
