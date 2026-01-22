@@ -4,10 +4,26 @@
 <meta charset="UTF-8">
 <title>TDK Research & Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f8f9fb; color:#222; }
 header { background:#0d1b2a; color:white; padding:40px 20px; text-align:center; }
-header h1 { margin:0; font-size:2.5em; }
+
+.logo { font-size:2.6em; font-weight:700; letter-spacing:0.03em; }
+.td-ligature { position:relative; display:inline-block; margin-right:0.06em; }
+.td-ligature .t { position:relative; z-index:2; }
+.td-ligature .d { position:relative; margin-left:-0.28em; }
+.td-ligature::before {
+  content:"";
+  position:absolute;
+  left:0.48em;
+  top:0.12em;
+  width:0.14em;
+  height:1.15em;
+  background:currentColor;
+  z-index:1;
+}
+
 nav { background:#1b263b; display:flex; flex-wrap:wrap; justify-content:center; }
 .nav-item { position:relative; }
 .nav-btn {
@@ -42,7 +58,11 @@ footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margi
 <body>
 
 <header>
-  <h1>TDK Research & Consulting</h1>
+  <h1 class="logo">
+    <span class="td-ligature">
+      <span class="t">T</span><span class="d">D</span>
+    </span>K Research &amp; Consulting
+  </h1>
   <p>Leading through passion</p>
 </header>
 
@@ -51,7 +71,7 @@ footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margi
   <div class="nav-item">
     <button class="nav-btn" onclick="toggleMenu(this)">Research Division ▼</button>
     <div class="dropdown">
-      <a>Thrombosis & Hemostasis</a>
+      <a>Thrombosis &amp; Hemostasis</a>
       <a>Protein Biochemistry</a>
       <a>AI-Assisted Drug Design</a>
       <a>Molecular Biology</a>
@@ -67,12 +87,12 @@ footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margi
   </div>
 
   <div class="nav-item">
-    <button class="nav-btn" onclick="toggleMenu(this)">Consulting & Contracting ▼</button>
+    <button class="nav-btn" onclick="toggleMenu(this)">Consulting &amp; Contracting ▼</button>
     <div class="dropdown">
       <a>uExamS</a>
       <a>Mercor Intelligence</a>
       <a>Designed Biologics</a>
-      <a>Lectures & Speaking</a>
+      <a>Lectures &amp; Speaking</a>
     </div>
   </div>
 
@@ -116,7 +136,7 @@ footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margi
 </section>
 
 <footer>
-<p>© 2026 TDK Research & Consulting</p>
+<p>© 2026 TDK Research &amp; Consulting</p>
 </footer>
 
 <script>
