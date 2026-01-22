@@ -15,11 +15,11 @@ nav { background:#1b263b; display:flex; flex-wrap:wrap; justify-content:center; 
 }
 .nav-btn:hover { color:#9bd1ff; }
 .dropdown {
-  display:none; position:absolute; top:100%; left:0; background:white; min-width:220px;
+  display:none; position:absolute; top:100%; left:0; background:white; min-width:240px;
   box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:10;
 }
 .dropdown a {
-  display:block; padding:10px 14px; color:#0d1b2a; text-decoration:none; font-weight:normal;
+  display:block; padding:10px 14px; color:#0d1b2a; text-decoration:none;
 }
 .dropdown a:hover { background:#eef3f8; }
 .nav-item.open .dropdown { display:block; }
@@ -47,6 +47,7 @@ footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margi
 </header>
 
 <nav>
+
   <div class="nav-item">
     <button class="nav-btn" onclick="toggleMenu(this)">Research Division ▼</button>
     <div class="dropdown">
@@ -85,8 +86,13 @@ footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margi
   </div>
 
   <div class="nav-item">
-    <a href="publications.html" class="nav-btn" style="text-decoration:none;">Publications</a>
+    <button class="nav-btn" onclick="toggleMenu(this)">Publications ▼</button>
+    <div class="dropdown">
+      <a href="publications.html">Peer-Reviewed Manuscripts</a>
+      <a href="abstracts.html">Conference Abstracts</a>
+    </div>
   </div>
+
 </nav>
 
 <section id="featured-publications">
