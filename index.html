@@ -3,8 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>TDK Research & Consulting</title>
-<link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f8f9fb; color:#222; }
+header { background:#0d1b2a; color:white; padding:40px 20px; text-align:center; }
+header h1 { margin:0; font-size:2.5em; }
+nav { background:#1b263b; text-align:center; padding:10px 0; }
+nav a { color:white; text-decoration:none; margin:0 15px; font-weight:bold; }
+nav a:hover { color:#9bd1ff; }
+section { max-width:1000px; margin:30px auto; padding:40px 20px; background:white; border-radius:8px; }
+h2 { color:#0d1b2a; border-bottom:2px solid #1b263b; padding-bottom:5px; }
+
+#featured-publications { background:#eef3f8; }
+.carousel-container { display:flex; overflow-x:auto; gap:15px; padding:20px 0; }
+.carousel-item { flex:0 0 auto; width:280px; background:white; border-radius:8px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+.carousel-item a { color:#0d3b66; font-weight:bold; text-decoration:none; }
+
+footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margin-top:40px; }
+</style>
 </head>
 
 <body>
@@ -15,90 +32,72 @@
 </header>
 
 <section id="featured-publications">
-  <h2>Featured Publications</h2>
-  <div class="carousel-container">
-    <div class="carousel-item">
-      <strong>AI-generated peptide therapeutics and diagnostics for PT-VWD</strong><br>
-      <em>Blood Advances</em> (IF ≈ 7.4, 2026)<br>
-      <a href="https://doi.org/10.1182/bloodadvances.2025017674">View paper</a>
-    </div>
-
-    <div class="carousel-item">
-      <strong>Designing the future of hematology</strong><br>
-      <em>Seminars in Thrombosis and Hemostasis</em> (2026, under revision)
-    </div>
-
-    <div class="carousel-item">
-      <strong>Peptides of a feather: How AI is taking peptide therapeutics under its wing</strong><br>
-      <em>Genes</em> (IF ≈ 3.5, 2023)<br>
-      <a href="https://doi.org/10.3390/genes14061194">View paper</a>
-    </div>
-
-    <div class="carousel-item">
-      <strong>Artificial Intelligence Reveals Nature</strong><br>
-      <em>International Journal of Molecular Sciences</em> (2025)<br>
-      <a href="https://doi.org/10.3390/ijms262110607">View paper</a>
-    </div>
+<h2>Featured Publications</h2>
+<div class="carousel-container">
+  <div class="carousel-item">
+    <strong>AI-generated peptide therapeutics for PT-VWD</strong><br>
+    <em>Blood Advances</em> (2026)<br>
+    <a href="https://doi.org/10.1182/bloodadvances.2025017674">View</a>
   </div>
+  <div class="carousel-item">
+    <strong>Designing the future of hematology</strong><br>
+    <em>Seminars in Thrombosis and Hemostasis</em><br>
+  </div>
+  <div class="carousel-item">
+    <strong>Peptides of a feather</strong><br>
+    <em>Genes</em> (2023)<br>
+    <a href="https://doi.org/10.3390/genes14061194">View</a>
+  </div>
+</div>
 </section>
 
 <nav>
   <a href="#home">Home</a>
-  <a href="#research">Research</a>
-  <a href="#technology">Technology</a>
+  <a href="#research">Research Division</a>
+  <a href="#technology">Technologx Division</a>
   <a href="publications.html">Publications</a>
-  <a href="#consulting">Consulting</a>
-  <a href="#community">Community</a>
+  <a href="#consulting">Consulting & Contracting</a>
+  <a href="#community">Community Engagement</a>
 </nav>
 
 <section id="home">
 <h2>Welcome</h2>
 <p>
-TDK Research & Consulting is a translational biomedical research group founded by
-<strong>Dr. Thomas Kazmirchuk</strong>. We develop artificial-intelligence–designed peptides
-to diagnose and correct dysfunctional blood clotting in rare and acquired bleeding disorders.
-</p>
-<p>
-Our flagship program targets platelet-type von Willebrand disease (PT-VWD), a paradoxical
-bleeding disorder driven by gain-of-function mutations in the platelet receptor GPIbα.
+TDK Research & Consulting is a translational biomedical research organization founded by
+<strong>Dr. Thomas Kazmirchuk</strong>. We develop AI-designed peptides that diagnose and correct
+pathological blood clotting in rare and acquired bleeding disorders.
 </p>
 </section>
 
 <section id="research">
-<h2>Research Program</h2>
+<h2>Research Division</h2>
 <p>
-Blood clotting is governed by a network of protein–protein interactions that must be precisely
-balanced. We develop molecular tools that directly target disease-causing binding events.
+The Research Division focuses on pathological protein–protein interactions in hemostasis,
+particularly platelet–von Willebrand factor dysregulation in platelet-type von Willebrand disease.
 </p>
 </section>
 
 <section id="technology">
-<h2>In-Silico Protein Synthesizer (InSiPS)</h2>
+<h2>Technologx Division — In-Silico Protein Synthesizer (InSiPS)</h2>
 <p>
-InSiPS is an AI-guided peptide discovery platform that generates highly specific molecules that
-bind pathological protein interfaces with therapeutic precision.
-</p>
-</section>
-
-<section id="publications">
-<h2>Publications</h2>
-<p>
-Peer-reviewed research spanning hemostasis, peptide design, and molecular cell biology.
+The Technologx Division develops AI-driven peptide discovery platforms that generate precision
+molecular tools capable of targeting disease-causing protein interfaces.
 </p>
 </section>
 
 <section id="consulting">
-<h2>Consulting</h2>
+<h2>Consulting & Contracting</h2>
 <p>
-Scientific advisory services in protein–protein interactions, AI-driven peptide design,
-and translational hematology.
+TDK Research provides scientific advisory services, peptide design, and translational strategy
+support for biotechnology companies, clinical groups, and academic partners.
 </p>
 </section>
 
 <section id="community">
-<h2>Community</h2>
+<h2>Community Engagement</h2>
 <p>
-TDK Research supports blood donation initiatives and youth sports leadership in Ottawa.
+TDK Research supports blood donation initiatives, patient advocacy, and youth sports leadership
+through partnerships with Canadian Blood Services and local community organizations.
 </p>
 </section>
 
