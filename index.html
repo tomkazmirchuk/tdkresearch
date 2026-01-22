@@ -6,155 +6,218 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f8f9fb; color:#222; }
-header { background:#0d1b2a; color:white; padding:40px 20px; text-align:center; }
+body {
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f4f7fb;
+}
 
-.logo { font-size:2.6em; font-weight:700; letter-spacing:0.03em; }
-.td-ligature { position:relative; display:inline-block; margin-right:0.06em; }
-.td-ligature .t { position:relative; z-index:2; }
-.td-ligature .d { position:relative; margin-left:-0.28em; }
-.td-ligature::before {
-  content:"";
+header {
+  background:#0a1f33;
+  color:white;
+  padding:40px 20px;
+  text-align:center;
+}
+
+/* ===== TD Ligature Logo ===== */
+.logo {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:64px;
+  font-weight:700;
+}
+
+.td {
+  position:relative;
+  width:90px;
+  height:80px;
+  margin-right:10px;
+}
+
+.td .roof {
   position:absolute;
-  left:0.48em;
-  top:0.12em;
-  width:0.14em;
-  height:1.15em;
-  background:currentColor;
-  z-index:1;
+  top:0;
+  left:0;
+  width:90px;
+  height:10px;
+  background:white;
 }
 
-nav { background:#1b263b; display:flex; flex-wrap:wrap; justify-content:center; }
-.nav-item { position:relative; }
-.nav-btn {
-  background:none; border:none; color:white; padding:12px 18px; font-weight:bold; cursor:pointer;
+.td .spine {
+  position:absolute;
+  top:0;
+  left:0;
+  width:10px;
+  height:80px;
+  background:white;
 }
-.nav-btn:hover { color:#9bd1ff; }
+
+.td .curve {
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:70px;
+  height:60px;
+  border:10px solid white;
+  border-left:none;
+  border-radius:0 40px 40px 0;
+}
+
+.k {
+  font-size:64px;
+  font-weight:700;
+  margin-left:10px;
+}
+
+.tagline {
+  margin-top:10px;
+  font-size:16px;
+  letter-spacing:1px;
+  opacity:0.85;
+}
+
+/* ===== NAV ===== */
+nav {
+  background:#102d4a;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+nav a, .dropdown-btn {
+  color:white;
+  padding:14px 20px;
+  text-decoration:none;
+  cursor:pointer;
+  font-weight:600;
+}
+
+nav a:hover, .dropdown-btn:hover {
+  background:#163c5f;
+}
+
 .dropdown {
-  display:none; position:absolute; top:100%; left:0; background:white; min-width:240px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.15); z-index:10;
+  position:relative;
 }
-.dropdown a {
-  display:block; padding:10px 14px; color:#0d1b2a; text-decoration:none;
+
+.dropdown-content {
+  display:none;
+  position:absolute;
+  background:white;
+  min-width:240px;
+  box-shadow:0 8px 16px rgba(0,0,0,.2);
+  z-index:10;
 }
-.dropdown a:hover { background:#eef3f8; }
-.nav-item.open .dropdown { display:block; }
 
-section { max-width:1000px; margin:30px auto; padding:40px 20px; background:white; border-radius:8px; }
-h2 { color:#0d1b2a; border-bottom:2px solid #1b263b; padding-bottom:6px; }
-
-#featured-publications { background:#eef3f8; }
-.carousel-container { display:flex; overflow-x:auto; gap:15px; padding:20px 0; }
-.carousel-item {
-  flex:0 0 auto; width:280px; background:white; border-radius:8px; padding:18px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+.dropdown-content a {
+  color:#0a1f33;
+  padding:12px 16px;
+  display:block;
+  text-decoration:none;
 }
-.carousel-item a { color:#0d3b66; font-weight:bold; text-decoration:none; }
 
-footer { background:#0d1b2a; color:white; text-align:center; padding:20px; margin-top:40px; }
+.dropdown-content a:hover {
+  background:#e8eef5;
+}
+
+.dropdown:hover .dropdown-content {
+  display:block;
+}
+
+/* ===== PAGE ===== */
+section {
+  max-width:1000px;
+  margin:40px auto;
+  background:white;
+  padding:40px;
+  border-radius:8px;
+  box-shadow:0 0 10px rgba(0,0,0,.05);
+}
+
+h2 {
+  border-bottom:2px solid #102d4a;
+  padding-bottom:10px;
+  color:#102d4a;
+}
+
+footer {
+  background:#0a1f33;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1 class="logo">
-    <span class="td-ligature">
-      <span class="t">T</span><span class="d">D</span>
-    </span>K Research &amp; Consulting
-  </h1>
-  <p>Leading through passion</p>
+  <div class="logo">
+    <div class="td">
+      <div class="roof"></div>
+      <div class="spine"></div>
+      <div class="curve"></div>
+    </div>
+    <div class="k">K</div>
+  </div>
+
+  <div class="tagline">Leading through passion</div>
 </header>
 
 <nav>
-
-  <div class="nav-item">
-    <button class="nav-btn" onclick="toggleMenu(this)">Research Division ▼</button>
-    <div class="dropdown">
-      <a>Thrombosis &amp; Hemostasis</a>
+  <div class="dropdown">
+    <div class="dropdown-btn">Research Division ▾</div>
+    <div class="dropdown-content">
+      <a>Thrombosis & Hemostasis</a>
       <a>Protein Biochemistry</a>
-      <a>AI-Assisted Drug Design</a>
+      <a>AI-assisted Drug Design</a>
       <a>Molecular Biology</a>
     </div>
   </div>
 
-  <div class="nav-item">
-    <button class="nav-btn" onclick="toggleMenu(this)">Technologx Division ▼</button>
-    <div class="dropdown">
-      <a>AI-Assisted Drug Design</a>
+  <div class="dropdown">
+    <div class="dropdown-btn">Technologx Division ▾</div>
+    <div class="dropdown-content">
+      <a>AI-assisted Drug Design</a>
       <a>EMH</a>
     </div>
   </div>
 
-  <div class="nav-item">
-    <button class="nav-btn" onclick="toggleMenu(this)">Consulting &amp; Contracting ▼</button>
-    <div class="dropdown">
+  <div class="dropdown">
+    <div class="dropdown-btn">Consulting & Contracting ▾</div>
+    <div class="dropdown-content">
       <a>uExamS</a>
       <a>Mercor Intelligence</a>
       <a>Designed Biologics</a>
-      <a>Lectures &amp; Speaking</a>
+      <a>Lectures & Speaking</a>
     </div>
   </div>
 
-  <div class="nav-item">
-    <button class="nav-btn" onclick="toggleMenu(this)">Community Engagement ▼</button>
-    <div class="dropdown">
+  <div class="dropdown">
+    <div class="dropdown-btn">Community Engagement ▾</div>
+    <div class="dropdown-content">
       <a>Ottawa Black Bears</a>
       <a>Nepean Knights Lacrosse</a>
       <a>Canadian Blood Services</a>
     </div>
   </div>
 
-  <div class="nav-item">
-    <button class="nav-btn" onclick="toggleMenu(this)">Publications ▼</button>
-    <div class="dropdown">
-      <a href="publications.html">Peer-Reviewed Manuscripts</a>
-      <a href="abstracts.html">Conference Abstracts</a>
-    </div>
-  </div>
-
+  <a href="publications.html">Publications</a>
 </nav>
 
-<section id="featured-publications">
-<h2>Featured Publications</h2>
-<div class="carousel-container">
-  <div class="carousel-item">
-    <strong>AI-generated peptide therapeutics for PT-VWD</strong><br>
-    <em>Blood Advances</em> (2026)<br>
-    <a href="https://doi.org/10.1182/bloodadvances.2025017674">View</a>
-  </div>
-  <div class="carousel-item">
-    <strong>Designing the future of hematology</strong><br>
-    <em>Seminars in Thrombosis and Hemostasis</em>
-  </div>
-  <div class="carousel-item">
-    <strong>Peptides of a feather</strong><br>
-    <em>Genes</em> (2023)<br>
-    <a href="https://doi.org/10.3390/genes14061194">View</a>
-  </div>
-</div>
+<section>
+  <h2>Welcome</h2>
+  <p>
+    TDK Research & Consulting is a translational biomedical research group led by
+    Dr. Thomas Kazmirchuk. We integrate protein biochemistry, AI-assisted molecular design,
+    and clinical hematology to build precision diagnostics and therapeutics.
+  </p>
 </section>
 
 <footer>
-<p>© 2026 TDK Research &amp; Consulting</p>
+  © 2026 TDK Research & Consulting
 </footer>
-
-<script>
-function toggleMenu(btn) {
-  document.querySelectorAll('.nav-item').forEach(item => {
-    if (item.contains(btn)) {
-      item.classList.toggle('open');
-    } else {
-      item.classList.remove('open');
-    }
-  });
-}
-document.addEventListener('click', function(e) {
-  if (!e.target.classList.contains('nav-btn')) {
-    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('open'));
-  }
-});
-</script>
 
 </body>
 </html>
