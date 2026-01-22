@@ -3,215 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <title>TDK Research & Consulting</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
+html, body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f9;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  background: #0b0b0b;
+  overflow: hidden;
 }
 
-header {
-  background: linear-gradient(135deg, #0b1f33, #123a5c);
+/* Main container */
+#home {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Left menu */
+#menu {
+  width: 40vw;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 36px;
+  z-index: 3;
+  background: #0b0b0b;
+}
+
+/* Title */
+#brand {
+  position: absolute;
+  top: 30px;
+  left: 40px;
   color: white;
-  padding: 50px 20px;
-  text-align: center;
-}
-
-header h1 {
-  font-size: 48px;
-  margin: 0;
-  letter-spacing: 2px;
-}
-
-header p {
-  margin-top: 10px;
-  font-size: 16px;
-  opacity: 0.85;
+  font-size: 18px;
   letter-spacing: 1px;
 }
 
-nav {
-  background: #102a43;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.nav-item {
-  position: relative;
-}
-
-nav button {
-  background: none;
-  border: none;
-  color: white;
-  padding: 14px 18px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-nav button:hover {
-  background: #163a5f;
-}
-
-.dropdown {
-  display: none;
+#tagline {
   position: absolute;
-  top: 100%;
-  left: 0;
-  background: white;
-  min-width: 260px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-  z-index: 10;
+  top: 58px;
+  left: 40px;
+  color: #aaa;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
-.dropdown a {
-  display: block;
-  padding: 10px 14px;
-  color: #102a43;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.dropdown a:hover {
-  background: #eef3f7;
-}
-
-.nav-item:hover .dropdown {
-  display: block;
-}
-
-section {
-  max-width: 1000px;
-  margin: 40px auto;
-  background: white;
-  padding: 40px;
-  border-radius: 8px;
-}
-
-h2 {
-  border-bottom: 2px solid #123a5c;
-  padding-bottom: 8px;
-}
-
-.featured {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 20px 0;
-}
-
-.card {
-  min-width: 260px;
-  background: #f1f5f9;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.card a {
-  text-decoration: none;
-  color: #123a5c;
-  font-weight: bold;
-}
-
-footer {
-  background: #0b1f33;
+/* Menu items */
+.menu-item {
   color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 60px;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+}
+
+.menu-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.menu-item:hover::after {
+  width: 100%;
+}
+
+/* Right image panel */
+#image-panel {
+  width: 60vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image layers */
+.preview {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: translateX(12%);
+  transition: opacity 520ms cubic-bezier(0.22,0.61,0.36,1),
+              transform 520ms cubic-bezier(0.22,0.61,0.36,1);
+}
+
+/* Active image */
+.preview.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mask edge */
+#mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(to right, #0b0b0b 0%, rgba(11,11,11,0) 100%);
+  z-index: 4;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>TDK Research &amp; Consulting</h1>
-  <p>Leading through passion</p>
-</header>
+<div id="brand">TDK Research & Consulting</div>
+<div id="tagline">Leading through passion</div>
 
-<nav>
+<div id="home">
 
-  <div class="nav-item">
-    <button>Research Division ▾</button>
-    <div class="dropdown">
-      <a>Thrombosis & Hemostasis</a>
-      <a>Protein Biochemistry</a>
-      <a>AI-Assisted Drug Design</a>
-      <a>Molecular Biology</a>
-    </div>
+  <div id="menu">
+    <div class="menu-item" data-target="bio">Biomedical Research Division</div>
+    <div class="menu-item" data-target="tech">Technologics Division</div>
+    <div class="menu-item" data-target="write">Writing Division</div>
+    <div class="menu-item" data-target="consult">Consulting & Contracting</div>
+    <div class="menu-item" data-target="community">Community</div>
   </div>
 
-  <div class="nav-item">
-    <button>Technologx Division ▾</button>
-    <div class="dropdown">
-      <a>AI-Assisted Drug Design</a>
-      <a>EMH</a>
-    </div>
-  </div>
+  <div id="image-panel">
+    <div id="mask"></div>
 
-  <div class="nav-item">
-    <button>Consulting & Contracting ▾</button>
-    <div class="dropdown">
-      <a>uExamS</a>
-      <a>Mercor Intelligence</a>
-      <a>Designed Biologics</a>
-      <a>Lectures & Speaking</a>
-    </div>
-  </div>
+    <div id="bio" class="preview"
+         style="background-image:url('images/bio.jpg');"></div>
 
-  <div class="nav-item">
-    <button>Community Engagement ▾</button>
-    <div class="dropdown">
-      <a>Ottawa Black Bears</a>
-      <a>Nepean Knights Lacrosse</a>
-      <a>Canadian Blood Services</a>
-    </div>
-  </div>
+    <div id="tech" class="preview"
+         style="background-image:url('images/tech.jpg');"></div>
 
-  <div class="nav-item">
-    <button>Publications ▾</button>
-    <div class="dropdown">
-      <a href="publications.html">Peer-Reviewed Manuscripts</a>
-      <a>Conference Abstracts</a>
-    </div>
-  </div>
+    <div id="write" class="preview"
+         style="background-image:url('images/write.jpg');"></div>
 
-</nav>
+    <div id="consult" class="preview"
+         style="background-image:url('images/consult.jpg');"></div>
 
-<section>
-<h2>Featured Publications</h2>
-
-<div class="featured">
-
-  <div class="card">
-    <strong>AI-generated peptide therapeutics for PT-VWD</strong><br>
-    <em>Blood Advances (2026)</em><br><br>
-    <a href="https://doi.org/10.1182/bloodadvances.2025017674" target="_blank">View</a>
-  </div>
-
-  <div class="card">
-    <strong>Designing the future of hematology</strong><br>
-    <em>Seminars in Thrombosis and Hemostasis</em><br><br>
-    <a href="#">Under revision</a>
-  </div>
-
-  <div class="card">
-    <strong>Peptides of a feather</strong><br>
-    <em>Genes (2023)</em><br><br>
-    <a href="https://doi.org/10.3390/genes14061194" target="_blank">View</a>
+    <div id="community" class="preview"
+         style="background-image:url('images/community.jpg');"></div>
   </div>
 
 </div>
-</section>
 
-<footer>
-© 2026 TDK Research & Consulting
-</footer>
+<script>
+const menuItems = document.querySelectorAll(".menu-item");
+const previews = document.querySelectorAll(".preview");
+
+menuItems.forEach(item => {
+  item.addEventListener("mouseenter", () => {
+    const target = item.dataset.target;
+    previews.forEach(p => p.classList.remove("active"));
+    document.getElementById(target).classList.add("active");
+  });
+
+  item.addEventListener("mouseleave", () => {
+    previews.forEach(p => p.classList.remove("active"));
+  });
+});
+</script>
 
 </body>
 </html>
