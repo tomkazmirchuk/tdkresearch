@@ -1,3 +1,46 @@
+#featured-publications {
+  padding: 40px 20px;
+  margin: 20px auto;
+  background: #ffffff;
+  border-radius: 8px;
+  max-width: 1000px;
+}
+
+#featured-publications h2 {
+  color: #0d1b2a;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.9em;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding-bottom: 10px;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 280px;
+  background: #f5f8fa;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.carousel-item a {
+  color: #0d3b66;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.carousel-item a:hover {
+  text-decoration: underline;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
