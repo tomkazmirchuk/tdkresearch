@@ -6,63 +6,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-html, body {
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   background: #0b0b0b;
-  overflow: hidden;
+  color: white;
 }
 
-/* Main container */
-#home {
+/* HEADER */
+#header {
+  padding: 60px 40px 40px 40px;
+  background: #0b0b0b;
+}
+
+#header h1 {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: 1px;
+}
+
+#header p {
+  margin-top: 10px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+/* FEATURED PUBLICATIONS */
+#featured {
+  padding: 40px;
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  gap: 30px;
+  overflow-x: auto;
 }
 
-/* Left menu */
+.card {
+  min-width: 280px;
+  background: #151515;
+  padding: 20px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* DIVISION SELECTOR */
+#divisions {
+  display: flex;
+  height: 80vh;
+  width: 100%;
+}
+
 #menu {
-  width: 40vw;
+  width: 40%;
   padding: 60px 40px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 36px;
-  z-index: 3;
   background: #0b0b0b;
+  z-index: 3;
 }
 
-/* Title */
-#brand {
-  position: absolute;
-  top: 30px;
-  left: 40px;
-  color: white;
-  font-size: 18px;
-  letter-spacing: 1px;
-}
-
-#tagline {
-  position: absolute;
-  top: 58px;
-  left: 40px;
-  color: #aaa;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-/* Menu items */
 .menu-item {
-  color: white;
   font-size: 26px;
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
-  position: relative;
   width: fit-content;
+  position: relative;
 }
 
 .menu-item::after {
@@ -80,15 +90,13 @@ html, body {
   width: 100%;
 }
 
-/* Right image panel */
 #image-panel {
-  width: 60vw;
-  height: 100vh;
+  width: 60%;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
 
-/* Image layers */
 .preview {
   position: absolute;
   inset: 0;
@@ -100,13 +108,12 @@ html, body {
               transform 520ms cubic-bezier(0.22,0.61,0.36,1);
 }
 
-/* Active image */
 .preview.active {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* Mask edge */
+/* dissolve edge */
 #mask {
   position: absolute;
   left: 0;
@@ -121,10 +128,21 @@ html, body {
 
 <body>
 
-<div id="brand">TDK Research & Consulting</div>
-<div id="tagline">Leading through passion</div>
+<!-- HEADER -->
+<div id="header">
+  <h1>TDK Research & Consulting</h1>
+  <p>Leading through passion</p>
+</div>
 
-<div id="home">
+<!-- FEATURED PAPERS -->
+<div id="featured">
+  <div class="card">Blood Advances – AI-Generated Peptide Therapeutics for PT-VWD</div>
+  <div class="card">Seminars in Thrombosis & Hemostasis – Designing the Future of Hematology</div>
+  <div class="card">Genes – Peptides of a Feather</div>
+</div>
+
+<!-- DIVISION SELECTOR -->
+<div id="divisions">
 
   <div id="menu">
     <div class="menu-item" data-target="bio">Biomedical Research Division</div>
@@ -137,20 +155,11 @@ html, body {
   <div id="image-panel">
     <div id="mask"></div>
 
-    <div id="bio" class="preview"
-         style="background-image:url('images/bio.jpg');"></div>
-
-    <div id="tech" class="preview"
-         style="background-image:url('images/tech.jpg');"></div>
-
-    <div id="write" class="preview"
-         style="background-image:url('images/write.jpg');"></div>
-
-    <div id="consult" class="preview"
-         style="background-image:url('images/consult.jpg');"></div>
-
-    <div id="community" class="preview"
-         style="background-image:url('images/community.jpg');"></div>
+    <div id="bio" class="preview" style="background-image:url('images/bio.jpg')"></div>
+    <div id="tech" class="preview" style="background-image:url('images/tech.jpg')"></div>
+    <div id="write" class="preview" style="background-image:url('images/write.jpg')"></div>
+    <div id="consult" class="preview" style="background-image:url('images/consult.jpg')"></div>
+    <div id="community" class="preview" style="background-image:url('images/community.jpg')"></div>
   </div>
 
 </div>
