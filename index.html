@@ -10,55 +10,34 @@ body {
   margin: 0;
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   background: #ffffff;
-  color: #0b1b2b;
+  color: #0a4ea1;
 }
 
-/* HEADER */
-#header {
-  padding: 80px 40px 30px 40px;
+/* TITLE BLOCK */
+#title-block {
+  background: #0a4ea1;
+  color: white;
   text-align: center;
+  padding: 70px 40px 50px 40px;
 }
 
-#header h1 {
+#title-block h1 {
   margin: 0;
   font-size: 48px;
   letter-spacing: 1px;
-  color: #0a4ea1;
 }
 
-#header p {
+#title-block p {
   margin-top: 12px;
   font-size: 18px;
-  color: #4a7fbf;
+  opacity: 0.9;
 }
 
-/* FEATURED */
-#featured-wrapper {
-  padding: 20px 40px 40px 40px;
-  text-align: center;
-}
-
-#featured-wrapper h2 {
-  margin-bottom: 24px;
-  color: #0a4ea1;
-  letter-spacing: 2px;
-  font-size: 20px;
-}
-
-/* Featured cards */
-#featured {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 280px;
-  background: #f2f7ff;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #cfe0f7;
+/* BLUE DIVIDER */
+#divider {
+  height: 4px;
+  background: #0a4ea1;
+  width: 100%;
 }
 
 /* DIVISIONS */
@@ -66,9 +45,9 @@ body {
   display: flex;
   height: 80vh;
   width: 100%;
-  margin-top: 20px;
 }
 
+/* LEFT MENU */
 #menu {
   width: 40%;
   padding: 60px 40px;
@@ -80,6 +59,7 @@ body {
   background: #ffffff;
 }
 
+/* MENU ITEMS */
 .menu-item {
   font-size: 26px;
   letter-spacing: 2px;
@@ -105,6 +85,7 @@ body {
   width: 100%;
 }
 
+/* RIGHT IMAGE PANEL */
 #image-panel {
   width: 60%;
   height: 100%;
@@ -113,7 +94,7 @@ body {
   background: #eef4fb;
 }
 
-/* images */
+/* PREVIEW IMAGES */
 .preview {
   position: absolute;
   inset: 0;
@@ -130,7 +111,7 @@ body {
   transform: translateX(0);
 }
 
-/* dissolve edge */
+/* DISSOLVE EDGE */
 #mask {
   position: absolute;
   left: 0;
@@ -141,7 +122,7 @@ body {
   z-index: 4;
 }
 
-/* Links */
+/* LINKS */
 a.menu-link {
   text-decoration: none;
   color: inherit;
@@ -151,21 +132,13 @@ a.menu-link {
 
 <body>
 
-<!-- HEADER -->
-<div id="header">
+<!-- TITLE BLOCK -->
+<div id="title-block">
   <h1>TDK Research & Consulting</h1>
   <p>Leading through passion</p>
 </div>
 
-<!-- FEATURED -->
-<div id="featured-wrapper">
-  <h2>FEATURED PUBLICATIONS</h2>
-  <div id="featured">
-    <div class="card">Blood Advances – AI-Generated Peptide Therapeutics for PT-VWD</div>
-    <div class="card">Seminars in Thrombosis & Hemostasis – Designing the Future of Hematology</div>
-    <div class="card">Genes – Peptides of a Feather</div>
-  </div>
-</div>
+<div id="divider"></div>
 
 <!-- DIVISIONS -->
 <div id="divisions">
