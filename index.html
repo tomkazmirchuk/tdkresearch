@@ -84,6 +84,25 @@ body {
   width: 100%;
 }
 
+/* COMMUNICATIONS SUBMENU */
+#comms-sub {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#comms-sub a {
+  color: #4a7fbf;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+#comms-sub a:hover {
+  text-decoration: underline;
+}
+
 /* RIGHT IMAGE PANEL */
 #image-panel {
   width: 60%;
@@ -140,26 +159,32 @@ a.menu-link {
   <div id="menu">
     <div class="menu-item" data-target="bio">Biomedical Research Division</div>
     <div class="menu-item" data-target="tech">Technologics Division</div>
-    <a href="publications.html" class="menu-link">
-      <div class="menu-item" data-target="write">Communications Division</div>
-    </a>
-    <div class="menu-item" data-target="consult">Consulting & Contracting</div>
+
+    <div class="menu-item" id="comms">Communications Division</div>
+    <div id="comms-sub">
+      <a href="publications.html">Publications</a>
+      <a href="#">Conference Abstracts &amp; Posters</a>
+      <a href="#">Lectures &amp; Seminars</a>
+    </div>
+
+    <div class="menu-item" data-target="consult">Consulting &amp; Contracting</div>
     <div class="menu-item" data-target="community">Community Initiatives</div>
+
     <a href="contact.html" class="menu-link">
       <div class="menu-item" data-target="contact">Contact</div>
     </a>
-
   </div>
 
   <div id="image-panel">
     <div id="mask"></div>
 
     <div id="bio" class="preview" style="background-image:url('images/BMR_Headshot.jpg')"></div>
-    <div id="write" class="preview" style="background-image:url('images/writing.jpg')"></div>
     <div id="consult" class="preview" style="background-image:url('images/consulting.jpg')"></div>
     <div id="community" class="preview" style="background-image:url('images/community.jpg')"></div>
-    <div id="contact" class="preview"></div>
+    <div id="write" class="preview" style="background-image:url('images/writing.jpg')"></div>
+
     <div id="tech" class="preview"></div>
+    <div id="contact" class="preview"></div>
   </div>
 
 </div>
@@ -171,6 +196,7 @@ const previews = document.querySelectorAll(".preview");
 menuItems.forEach(item => {
   item.addEventListener("mouseenter", () => {
     const target = item.dataset.target;
+    if (!target) return;
     previews.forEach(p => p.classList.remove("active"));
     document.getElementById(target).classList.add("active");
   });
