@@ -34,26 +34,7 @@ body {
 #menu {
   width: 40%;
   padding: 50px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* PARALLAX LAYER */
-#parallax-bg {
-  position: absolute;
-  inset: -20%;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(90,160,255,0.18), transparent 60%),
-    radial-gradient(circle at 70% 60%, rgba(120,200,255,0.12), transparent 60%),
-    radial-gradient(circle at 50% 80%, rgba(80,120,255,0.10), transparent 65%);
-  z-index: 0;
-  transition: transform 0.1s linear;
-}
-
-/* MENU CONTENT ABOVE PARALLAX */
-#menu > *:not(#parallax-bg) {
-  position: relative;
-  z-index: 2;
+  background: #ffffff;
 }
 
 /* MENU ITEMS */
@@ -128,7 +109,6 @@ body {
 <div id="divisions">
 
   <div id="menu">
-    <div id="parallax-bg"></div>
 
     <div class="menu-item" data-target="bio">Biomedical Research Division</div>
     <div class="menu-item" data-target="tech">Technologics Division</div>
@@ -147,6 +127,7 @@ body {
     <a href="contact.html" style="text-decoration:none">
       <div class="menu-item">Contact</div>
     </a>
+
   </div>
 
   <div id="image-panel">
@@ -161,7 +142,6 @@ body {
 </div>
 
 <script>
-/* Hover images */
 const items = document.querySelectorAll(".menu-item[data-target]");
 const previews = document.querySelectorAll(".preview");
 
@@ -171,18 +151,6 @@ items.forEach(item => {
     const el = document.getElementById(item.dataset.target);
     if (el) el.classList.add("active");
   });
-});
-
-/* True parallax motion */
-const bg = document.getElementById("parallax-bg");
-const menu = document.getElementById("menu");
-
-menu.addEventListener("mousemove", e => {
-  const rect = menu.getBoundingClientRect();
-  const x = (e.clientX - rect.left) / rect.width - 0.5;
-  const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-  bg.style.transform = `translate(${x * 40}px, ${y * 40}px)`;
 });
 </script>
 
