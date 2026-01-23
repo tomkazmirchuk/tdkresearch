@@ -15,13 +15,7 @@ body {
 
 /* TITLE BLOCK */
 #title-block {
-  background: linear-gradient(
-    to right,
-    #062f6a 0%,
-    #0a4ea1 40%,
-    #0a4ea1 60%,
-    #083b82 100%
-  );
+  background: linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
   color: white;
   text-align: center;
   padding: 22px 40px 18px 40px;
@@ -30,7 +24,6 @@ body {
 #title-block h1 {
   margin: 0;
   font-size: 38px;
-  letter-spacing: 1px;
 }
 
 #title-block p {
@@ -43,19 +36,15 @@ body {
 #divisions {
   display: flex;
   height: 80vh;
-  width: 100%;
 }
 
 /* LEFT MENU */
 #menu {
   width: 40%;
   padding: 50px 40px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 36px;
-  background: #ffffff;
+  gap: 30px;
 }
 
 /* MENU ITEMS */
@@ -64,57 +53,39 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
-  width: fit-content;
-  position: relative;
   color: #0a4ea1;
 }
 
-.menu-item::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #0a4ea1;
-  transition: width 0.3s ease;
+/* COMMUNICATIONS */
+#comms {
+  cursor: pointer;
 }
 
-.menu-item:hover::after {
-  width: 100%;
-}
-
-/* COMMUNICATIONS SUBMENU */
 #comms-sub {
+  max-height: 0;
+  overflow: hidden;
   margin-left: 20px;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
+  transition: max-height 0.4s ease;
 }
 
 #comms-sub a {
-  color: #4a7fbf;
+  display: block;
   font-size: 16px;
-  letter-spacing: 1px;
+  color: #4a7fbf;
+  margin: 8px 0;
   text-decoration: none;
 }
 
-#comms-sub a:hover {
-  text-decoration: underline;
-}
-
-/* Show submenu when hovering communications */
+/* drawer open */
 #comms-wrapper:hover #comms-sub {
-  display: flex;
+  max-height: 200px;
 }
 
 /* RIGHT IMAGE PANEL */
 #image-panel {
   width: 60%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
   background: #eef4fb;
+  position: relative;
 }
 
 /* PREVIEW IMAGES */
@@ -124,7 +95,7 @@ body {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 450ms ease-in-out;
+  transition: opacity 400ms ease;
 }
 
 .preview.active {
@@ -135,82 +106,64 @@ body {
 #mask {
   position: absolute;
   left: 0;
-  top: 0;
   width: 40px;
   height: 100%;
-  background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0) 100%);
-  z-index: 4;
-}
-
-/* LINKS */
-a.menu-link {
-  text-decoration: none;
-  color: inherit;
+  background: linear-gradient(to right, #ffffff, transparent);
+  z-index: 3;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TITLE BLOCK -->
 <div id="title-block">
   <h1>TDK Research & Consulting</h1>
   <p>Leading through passion</p>
 </div>
 
-<!-- DIVISIONS -->
 <div id="divisions">
 
   <div id="menu">
     <div class="menu-item" data-target="bio">Biomedical Research Division</div>
     <div class="menu-item" data-target="tech">Technologics Division</div>
 
-    <!-- Communications with hover submenu -->
     <div id="comms-wrapper">
-      <div class="menu-item">Communications Division</div>
+      <div class="menu-item" id="comms" data-target="write">Communications Division</div>
       <div id="comms-sub">
         <a href="publications.html">Publications</a>
-        <a href="#">Conference Abstracts &amp; Posters</a>
-        <a href="#">Lectures &amp; Seminars</a>
+        <a href="#">Conference Abstracts & Posters</a>
+        <a href="#">Lectures & Seminars</a>
       </div>
     </div>
 
-    <div class="menu-item" data-target="consult">Consulting &amp; Contracting</div>
+    <div class="menu-item" data-target="consult">Consulting & Contracting</div>
     <div class="menu-item" data-target="community">Community Initiatives</div>
-
-    <a href="contact.html" class="menu-link">
-      <div class="menu-item" data-target="contact">Contact</div>
+    <a href="contact.html" style="text-decoration:none">
+      <div class="menu-item">Contact</div>
     </a>
   </div>
 
   <div id="image-panel">
     <div id="mask"></div>
-
     <div id="bio" class="preview" style="background-image:url('images/BMR_Headshot.jpg')"></div>
+    <div id="write" class="preview" style="background-image:url('images/writing.jpg')"></div>
     <div id="consult" class="preview" style="background-image:url('images/consulting.jpg')"></div>
     <div id="community" class="preview" style="background-image:url('images/community.jpg')"></div>
-    <div id="write" class="preview" style="background-image:url('images/writing.jpg')"></div>
-
     <div id="tech" class="preview"></div>
-    <div id="contact" class="preview"></div>
   </div>
 
 </div>
 
 <script>
-const menuItems = document.querySelectorAll(".menu-item[data-target]");
+const items = document.querySelectorAll(".menu-item[data-target]");
 const previews = document.querySelectorAll(".preview");
 
-menuItems.forEach(item => {
+items.forEach(item => {
   item.addEventListener("mouseenter", () => {
-    const target = item.dataset.target;
     previews.forEach(p => p.classList.remove("active"));
-    const el = document.getElementById(target);
+    const t = item.dataset.target;
+    const el = document.getElementById(t);
     if (el) el.classList.add("active");
-  });
-
-  item.addEventListener("mouseleave", () => {
-    previews.forEach(p => p.classList.remove("active"));
   });
 });
 </script>
