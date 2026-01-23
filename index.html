@@ -42,9 +42,25 @@ body {
 #menu {
   width: 40%;
   padding: 50px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* AI PARALLAX BACKGROUND */
+#parallax-bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(90,160,255,0.15), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(120,200,255,0.12), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(80,120,255,0.10), transparent 50%);
+  transition: transform 0.1s linear;
+  z-index: 0;
+}
+
+#menu > *:not(#parallax-bg) {
+  position: relative;
+  z-index: 2;
 }
 
 /* MENU ITEMS */
@@ -53,14 +69,10 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
-  color: #0a4ea1;
+  margin-bottom: 20px;
 }
 
 /* COMMUNICATIONS */
-#comms {
-  cursor: pointer;
-}
-
 #comms-sub {
   max-height: 0;
   overflow: hidden;
@@ -76,7 +88,6 @@ body {
   text-decoration: none;
 }
 
-/* drawer open */
 #comms-wrapper:hover #comms-sub {
   max-height: 200px;
 }
@@ -124,11 +135,13 @@ body {
 <div id="divisions">
 
   <div id="menu">
+    <div id="parallax-bg"></div>
+
     <div class="menu-item" data-target="bio">Biomedical Research Division</div>
     <div class="menu-item" data-target="tech">Technologics Division</div>
 
     <div id="comms-wrapper">
-      <div class="menu-item" id="comms" data-target="write">Communications Division</div>
+      <div class="menu-item" data-target="write">Communications Division</div>
       <div id="comms-sub">
         <a href="publications.html">Publications</a>
         <a href="#">Conference Abstracts & Posters</a>
@@ -155,6 +168,7 @@ body {
 </div>
 
 <script>
+/* Hover images */
 const items = document.querySelectorAll(".menu-item[data-target]");
 const previews = document.querySelectorAll(".preview");
 
@@ -165,6 +179,14 @@ items.forEach(item => {
     const el = document.getElementById(t);
     if (el) el.classList.add("active");
   });
+});
+
+/* Parallax background */
+const bg = document.getElementById("parallax-bg");
+document.addEventListener("mousemove", e => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  bg.style.transform = `translate(${x}px, ${y}px)`;
 });
 </script>
 
