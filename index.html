@@ -54,10 +54,16 @@ body {
     radial-gradient(circle at 30% 40%, rgba(90,160,255,0.15), transparent 40%),
     radial-gradient(circle at 70% 60%, rgba(120,200,255,0.12), transparent 45%),
     radial-gradient(circle at 50% 80%, rgba(80,120,255,0.10), transparent 50%);
-  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, filter 0.3s ease;
   z-index: 0;
+  filter: brightness(1);
 }
 
+#menu.active #parallax-bg {
+  filter: brightness(1.25);
+}
+
+/* MENU CONTENT ABOVE FIELD */
 #menu > *:not(#parallax-bg) {
   position: relative;
   z-index: 2;
@@ -161,34 +167,4 @@ body {
     <div id="bio" class="preview" style="background-image:url('images/BMR_Headshot.jpg')"></div>
     <div id="write" class="preview" style="background-image:url('images/writing.jpg')"></div>
     <div id="consult" class="preview" style="background-image:url('images/consulting.jpg')"></div>
-    <div id="community" class="preview" style="background-image:url('images/community.jpg')"></div>
-    <div id="tech" class="preview"></div>
-  </div>
-
-</div>
-
-<script>
-/* Hover images */
-const items = document.querySelectorAll(".menu-item[data-target]");
-const previews = document.querySelectorAll(".preview");
-
-items.forEach(item => {
-  item.addEventListener("mouseenter", () => {
-    previews.forEach(p => p.classList.remove("active"));
-    const t = item.dataset.target;
-    const el = document.getElementById(t);
-    if (el) el.classList.add("active");
-  });
-});
-
-/* Parallax background */
-const bg = document.getElementById("parallax-bg");
-document.addEventListener("mousemove", e => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 20;
-  const y = (e.clientY / window.innerHeight - 0.5) * 20;
-  bg.style.transform = `translate(${x}px, ${y}px)`;
-});
-</script>
-
-</body>
-</html>
+    <div id="community" class="preview"
