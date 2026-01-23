@@ -87,7 +87,7 @@ body {
 /* COMMUNICATIONS SUBMENU */
 #comms-sub {
   margin-left: 20px;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 10px;
 }
@@ -101,6 +101,11 @@ body {
 
 #comms-sub a:hover {
   text-decoration: underline;
+}
+
+/* Show submenu when hovering communications */
+#comms-wrapper:hover #comms-sub {
+  display: flex;
 }
 
 /* RIGHT IMAGE PANEL */
@@ -160,11 +165,14 @@ a.menu-link {
     <div class="menu-item" data-target="bio">Biomedical Research Division</div>
     <div class="menu-item" data-target="tech">Technologics Division</div>
 
-    <div class="menu-item" id="comms">Communications Division</div>
-    <div id="comms-sub">
-      <a href="publications.html">Publications</a>
-      <a href="#">Conference Abstracts &amp; Posters</a>
-      <a href="#">Lectures &amp; Seminars</a>
+    <!-- Communications with hover submenu -->
+    <div id="comms-wrapper">
+      <div class="menu-item">Communications Division</div>
+      <div id="comms-sub">
+        <a href="publications.html">Publications</a>
+        <a href="#">Conference Abstracts &amp; Posters</a>
+        <a href="#">Lectures &amp; Seminars</a>
+      </div>
     </div>
 
     <div class="menu-item" data-target="consult">Consulting &amp; Contracting</div>
@@ -190,15 +198,15 @@ a.menu-link {
 </div>
 
 <script>
-const menuItems = document.querySelectorAll(".menu-item");
+const menuItems = document.querySelectorAll(".menu-item[data-target]");
 const previews = document.querySelectorAll(".preview");
 
 menuItems.forEach(item => {
   item.addEventListener("mouseenter", () => {
     const target = item.dataset.target;
-    if (!target) return;
     previews.forEach(p => p.classList.remove("active"));
-    document.getElementById(target).classList.add("active");
+    const el = document.getElementById(target);
+    if (el) el.classList.add("active");
   });
 
   item.addEventListener("mouseleave", () => {
