@@ -7,15 +7,37 @@
 <style>
 body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
 .header{background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);color:#fff;padding:40px;text-align:center}
-.content{max-width:900px;margin:60px auto;padding:0 30px;line-height:1.7}
-a{color:#0a4ea1;text-decoration:none}
+.content{max-width:1000px;margin:60px auto;padding:0 30px;line-height:1.7}
+
+/* info cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:50px;
+}
+
+.card{
+  border:1px solid #d6e3f3;
+  border-radius:10px;
+  padding:25px;
+  background:#f8fbff;
+  box-shadow:0 6px 18px rgba(0,0,0,0.05);
+}
+
+.card h3{
+  margin-top:0;
+  color:#062f6a;
+}
 </style>
 </head>
 <body>
+
 <div class="header">
   <h1>Blood Work</h1>
   <p>Biomedical Research Division</p>
 </div>
+
 <div class="content">
   <p>
     The Blood Work program at TDK Research & Consulting focuses on translational,
@@ -34,6 +56,38 @@ a{color:#0a4ea1;text-decoration:none}
     The long-term goal is to enable rapid, mechanism-informed blood diagnostics
     that guide patient stratification and therapeutic decision-making.
   </p>
+
+  <!-- INFO CARDS -->
+  <div class="cards">
+    <div class="card">
+      <h3>Platelet-type VWD</h3>
+      <p>
+        Rare gain-of-function mutations in GPIbα cause pathological binding to
+        von Willebrand factor, resulting in unstable platelet plugs and
+        paradoxical bleeding. This program investigates mechanism, diagnostics,
+        and peptide-based therapeutic strategies.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Pre-eclampsia</h3>
+      <p>
+        Abnormal placental signaling and endothelial dysfunction drive
+        hypercoagulability and vascular injury. Blood-based biomarker and
+        functional assays are being explored to enable earlier risk prediction.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Additional Bleeding Disorders</h3>
+      <p>
+        This platform extends to unexplained bleeding phenotypes, platelet
+        function disorders, and rare coagulopathies where standard diagnostics
+        fail to capture functional defects.
+      </p>
+    </div>
+  </div>
+
 </div>
 </body>
 </html>
