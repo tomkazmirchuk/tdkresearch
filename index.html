@@ -20,7 +20,6 @@ body{
   text-align:center;
   padding:22px 40px 18px 40px;
 }
-
 #title-block h1{margin:0;font-size:38px}
 #title-block p{margin-top:8px;font-size:18px;opacity:0.9}
 
@@ -69,6 +68,7 @@ body{
   margin-top:40px;
   padding-top:20px;
   border-top:1px solid #d6e3f3;
+  text-align:center;
 }
 #linkedin-panel h3{
   margin-bottom:15px;
@@ -77,10 +77,38 @@ body{
   color:#062f6a;
   text-transform:uppercase;
 }
-.li-post{margin-bottom:15px}
-.li-title{margin:0;font-size:14px;font-weight:600}
-.li-meta{margin:2px 0 6px;font-size:12px;color:#6a8fbf}
-.li-post a{font-size:13px;color:#0a4ea1;text-decoration:none}
+
+.li-row{
+  display:flex;
+  gap:20px;
+  justify-content:space-between;
+}
+
+.li-post{
+  flex:1;
+  background:#f8fbff;
+  padding:12px;
+  border-radius:8px;
+}
+
+.li-title{
+  margin:0;
+  font-size:14px;
+  font-weight:600;
+}
+
+.li-meta{
+  margin:2px 0 6px;
+  font-size:12px;
+  color:#6a8fbf;
+}
+
+.li-post a{
+  font-size:13px;
+  color:#0a4ea1;
+  text-decoration:none;
+}
+
 .li-profile{
   display:inline-block;
   margin-top:10px;
@@ -161,28 +189,30 @@ body{
     <div id="linkedin-panel">
       <h3>LinkedIn Updates</h3>
 
-      <div class="li-post">
-        <p class="li-title">Leader of the Pack</p>
-        <p class="li-meta">Recent post</p>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7411074010211381248/" target="_blank">
-          View on LinkedIn →
-        </a>
-      </div>
+      <div class="li-row">
+        <div class="li-post">
+          <p class="li-title">Leader of the Pack</p>
+          <p class="li-meta">Recent post</p>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7411074010211381248/" target="_blank">
+            View →
+          </a>
+        </div>
 
-      <div class="li-post">
-        <p class="li-title">Hemostasis today</p>
-        <p class="li-meta">Recent post</p>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7374093421247893504/" target="_blank">
-          View on LinkedIn →
-        </a>
-      </div>
+        <div class="li-post">
+          <p class="li-title">Hemostasis today post</p>
+          <p class="li-meta">Recent post</p>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7374093421247893504/" target="_blank">
+            View →
+          </a>
+        </div>
 
-            <div class="li-post">
-        <p class="li-title">New Blood Advances publication!</p>
-        <p class="li-meta">Recent post</p>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7372343339586723840/" target="_blank">
-          View on LinkedIn →
-        </a>
+        <div class="li-post">
+          <p class="li-title">New Blood Advances publication online!</p>
+          <p class="li-meta">Recent publication</p>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7372343339586723840/" target="_blank">
+            View →
+          </a>
+        </div>
       </div>
 
       <a class="li-profile"
