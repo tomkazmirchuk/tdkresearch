@@ -43,18 +43,18 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-/* COMMUNICATIONS DRAWER */
-#comms-sub {
+/* SUBMENUS */
+.submenu {
   max-height: 0;
   overflow: hidden;
   margin-left: 20px;
   transition: max-height 0.4s ease;
 }
 
-#comms-sub a {
+.submenu a {
   display: block;
   font-size: 16px;
   color: #4a7fbf;
@@ -62,7 +62,12 @@ body {
   text-decoration: none;
 }
 
-#comms-wrapper:hover #comms-sub {
+.submenu a:hover {
+  text-decoration: underline;
+}
+
+/* Open on hover */
+.parent:hover .submenu {
   max-height: 200px;
 }
 
@@ -110,12 +115,22 @@ body {
 
   <div id="menu">
 
-    <div class="menu-item" data-target="bio">Biomedical Research Division</div>
+    <!-- Biomedical with submenu -->
+    <div class="parent">
+      <div class="menu-item" data-target="bio">Biomedical Research Division</div>
+      <div class="submenu">
+        <a href="#">Blood Work</a>
+        <a href="#">Theranostics</a>
+        <a href="#">Molecular Biology</a>
+      </div>
+    </div>
+
     <div class="menu-item" data-target="tech">Technologics Division</div>
 
-    <div id="comms-wrapper">
+    <!-- Communications -->
+    <div class="parent">
       <div class="menu-item" data-target="write">Communications Division</div>
-      <div id="comms-sub">
+      <div class="submenu">
         <a href="publications.html">Publications</a>
         <a href="#">Conference Abstracts & Posters</a>
         <a href="#">Lectures & Seminars</a>
