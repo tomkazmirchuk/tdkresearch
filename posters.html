@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Conference Abstracts & Posters – TDK Research & Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:#f7f9fc;
+  color:#0a4ea1;
+}
+
+/* HEADER */
+.header{
+  background: linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
+  color:#fff;
+  padding:50px 30px;
+  text-align:center;
+}
+
+/* LAYOUT */
+.container{
+  max-width:1200px;
+  margin:60px auto;
+  padding:0 25px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+/* POSTER CARD */
+.card{
+  background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:transform .2s ease, box-shadow .2s ease;
+  cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.12);
+}
+
+.thumb{
+  width:100%;
+  height:340px;
+  background:#ddd center/cover no-repeat;
+}
+
+.card-body{
+  padding:16px 18px;
+}
+
+.card-body h3{
+  margin:0 0 6px 0;
+  font-size:17px;
+  color:#062f6a;
+}
+
+.card-body p{
+  margin:0;
+  font-size:14px;
+  color:#4a6fa1;
+}
+
+.back{
+  text-align:center;
+  margin:50px 0 20px 0;
+}
+.back a{
+  text-decoration:none;
+  color:#0a4ea1;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>Conference Abstracts & Posters</h1>
+  <p>Selected scientific presentations</p>
+</div>
+
+<div class="container">
+
+  <div class="grid">
+
+    <!-- POSTER 1 -->
+    <div class="card" onclick="window.open('posters/poster1.pdf','_blank')">
+      <div class="thumb" style="background-image:url('posters/poster1.jpg')"></div>
+      <div class="card-body">
+        <h3>AI-Designed Peptides for PT-VWD</h3>
+        <p>ISTH Congress • 2024</p>
+      </div>
+    </div>
+
+    <!-- POSTER 2 -->
+    <div class="card" onclick="window.open('posters/poster2.pdf','_blank')">
+      <div class="thumb" style="background-image:url('posters/poster2.jpg')"></div>
+      <div class="card-body">
+        <h3>Disrupting GPIbα–VWF Interactions</h3>
+        <p>ASH Annual Meeting • 2023</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="back">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+</div>
+
+</body>
+</html>
