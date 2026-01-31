@@ -47,11 +47,15 @@ body {
 }
 
 /* SUBMENUS */
-.submenu {
+.parent .submenu {
   max-height: 0;
   overflow: hidden;
   margin-left: 20px;
   transition: max-height 0.4s ease;
+}
+
+.parent:hover .submenu {
+  max-height: 200px;
 }
 
 .submenu a {
@@ -64,11 +68,6 @@ body {
 
 .submenu a:hover {
   text-decoration: underline;
-}
-
-/* Open on hover */
-.parent:hover .submenu {
-  max-height: 200px;
 }
 
 /* RIGHT PANEL */
@@ -119,9 +118,9 @@ body {
     <div class="parent">
       <div class="menu-item" data-target="bio">Biomedical Research Division</div>
       <div class="submenu">
-        <a href="#">Blood Work</a>
-        <a href="#">Theranostics</a>
-        <a href="#">Molecular Biology</a>
+        <a href="blood-work.html">Blood Work</a>
+        <a href="theranostics.html">Theranostics</a>
+        <a href="molecular-biology.html">Molecular Biology</a>
       </div>
     </div>
 
