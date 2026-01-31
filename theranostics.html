@@ -4,31 +4,136 @@
 <meta charset="UTF-8">
 <title>Theranostics – TDK Research & Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
-.header{background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);color:#fff;padding:40px;text-align:center}
-.content{max-width:900px;margin:60px auto;padding:0 30px;line-height:1.7}
-a{color:#0a4ea1;text-decoration:none}
+body{
+  margin:0;
+  font-family:Segoe UI,Arial;
+  color:#0a4ea1;
+  background:#000
+}
+
+/* BACKGROUND IMAGE */
+#bg{
+  position:fixed;
+  inset:0;
+  background:url("images/theranostics-hero.jpg") center/cover no-repeat;
+  filter:brightness(0.45);
+  z-index:-2;
+}
+
+/* DARK OVERLAY */
+#overlay{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.85));
+  z-index:-1;
+}
+
+/* HEADER */
+.header{
+  background: linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
+  color:#fff;
+  padding:40px;
+  text-align:center
+}
+
+/* CONTENT */
+.content{
+  max-width:1100px;
+  margin:60px auto;
+  padding:40px;
+  line-height:1.7;
+  background:rgba(255,255,255,0.9);
+  border-radius:12px
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:40px
+}
+
+.card{
+  border:1px solid #d6e3f3;
+  border-radius:10px;
+  padding:25px;
+  background:rgba(255,255,255,0.97);
+  box-shadow:0 6px 18px rgba(0,0,0,0.15)
+}
+
+.card h3{
+  margin-top:0;
+  color:#062f6a
+}
 </style>
 </head>
+
 <body>
+
+<div id="bg"></div>
+<div id="overlay"></div>
+
 <div class="header">
   <h1>Theranostics</h1>
   <p>Biomedical Research Division</p>
 </div>
+
 <div class="content">
   <p>
-    The Theranostics division develops dual-function platforms that combine
-    <strong>diagnostic insight with therapeutic action</strong>. This program is
-    centered on AI-assisted peptide design, structural modeling, and experimental
-    validation to generate molecules that both report on disease state and
-    modulate pathological pathways.
+    The Theranostics platform at TDK Research & Consulting is dedicated to the
+    development of integrated diagnostic–therapeutic systems that combine
+    <strong>molecular recognition, functional readouts, and targeted biological
+    intervention</strong>.
   </p>
+
   <p>
-    Using in-silico design frameworks and structure-guided modeling, this platform
-    targets protein–protein interactions involved in thrombosis, inflammation,
-    and vascular dysfunction, enabling seamless transition from probe to lead.
+    This program leverages AI-assisted peptide design, structural modeling, and
+    experimental validation to generate molecular systems that not only detect
+    disease-relevant biology, but actively modulate it. Rather than focusing on
+    a single indication, the platform is designed to scale across
+    <strong>high-burden diseases</strong> including sepsis, pancreatic cancer,
+    cardiovascular disease, and inflammatory disorders.
   </p>
+
+  <p>
+    By unifying diagnostics, therapeutics, and functional molecular tools,
+    Theranostics enables a new generation of precision biological technologies.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Diagnostics</h3>
+      <p>
+        Molecular systems designed to detect disease-relevant protein
+        interactions, pathway activation states, and functional biomarkers in
+        complex biological samples, including blood and tissue-derived fluids.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Therapeutics</h3>
+      <p>
+        AI-designed peptides and biologics that selectively modulate pathological
+        protein networks involved in sepsis, cancer, vascular disease, and
+        immune dysfunction.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Functional Tools</h3>
+      <p>
+        Engineered molecular probes that act as biosensors and pathway reporters,
+        enabling functional measurements in molecular biology, drug discovery,
+        and translational research environments.
+      </p>
+    </div>
+
+  </div>
 </div>
+
 </body>
 </html>
