@@ -4,31 +4,126 @@
 <meta charset="UTF-8">
 <title>Molecular Biology – TDK Research & Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
-.header{background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);color:#fff;padding:40px;text-align:center}
-.content{max-width:900px;margin:60px auto;padding:0 30px;line-height:1.7}
-a{color:#0a4ea1;text-decoration:none}
+body{
+  margin:0;
+  font-family:Segoe UI,Arial;
+  color:#0a4ea1;
+  background:#000
+}
+
+/* BACKGROUND IMAGE */
+#bg{
+  position:fixed;
+  inset:0;
+  background:url("images/molecular-hero.jpg") center/cover no-repeat;
+  filter:brightness(0.8);
+  z-index:-2;
+}
+
+/* DARK OVERLAY */
+#overlay{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.75));
+  z-index:-1;
+}
+
+/* HEADER */
+.header{
+  background: linear-gradient(to right, #1e6f3f, #2ea66b, #1e6f3f);
+  color:#fff;
+  padding:40px;
+  text-align:center
+}
+
+/* CONTENT */
+.content{
+  max-width:1100px;
+  margin:60px auto;
+  padding:40px;
+  line-height:1.7;
+  background:rgba(255,255,255,0.9);
+  border-radius:12px
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:40px
+}
+
+.card{
+  border:1px solid #d6e3f3;
+  border-radius:10px;
+  padding:25px;
+  background:rgba(255,255,255,0.97);
+  box-shadow:0 6px 18px rgba(0,0,0,0.15)
+}
+
+.card h3{
+  margin-top:0;
+  color:#1e6f3f
+}
 </style>
 </head>
+
 <body>
+
+<div id="bg"></div>
+<div id="overlay"></div>
+
 <div class="header">
   <h1>Molecular Biology</h1>
   <p>Biomedical Research Division</p>
 </div>
+
 <div class="content">
   <p>
-    The Molecular Biology program underpins discovery at TDK Research & Consulting
-    by focusing on <strong>mechanistic, structure–function biology</strong>.
+    The Molecular Biology platform at TDK Research & Consulting provides the
+    mechanistic foundation for all discovery programs, integrating molecular
+    genetics, enzymology, and receptor biology with computational modeling and
+    translational insight.
   </p>
+
   <p>
-    This division specializes in recombinant protein systems, interaction mapping,
-    mutational analysis, and biophysical characterization, integrating wet-lab
-    experimentation with computational modeling and structural validation.
+    This division specializes in structure–function analysis, protein
+    modification pathways, and pathway interrogation using model systems and
+    engineered molecular tools.
   </p>
-  <p>
-    It provides the foundation for all downstream diagnostics and therapeutics.
-  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Yeast Biology</h3>
+      <p>
+        Model systems for genetic manipulation, pathway dissection, and
+        protein quality control, enabling rapid hypothesis testing and
+        mechanism discovery.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Enzyme Biochemistry</h3>
+      <p>
+        Quantitative analysis of catalytic mechanisms, substrate specificity,
+        and regulation using kinetic assays and structural modeling.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Receptor Ubiquitylation</h3>
+      <p>
+        Investigation of post-translational modification networks that control
+        receptor signaling, trafficking, and degradation in health and disease.
+      </p>
+    </div>
+
+  </div>
 </div>
+
 </body>
 </html>
