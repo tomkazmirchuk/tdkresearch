@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <title>Blood Work – TDK Research & Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
+body{
+  margin:0;
+  font-family:Segoe UI,Arial;
+  color:#0a4ea1;
+  background:#fff
+}
+
 .header{
   background: linear-gradient(to right, #5a0f14, #8b1a1a, #5a0f14);
   color:#fff;
@@ -13,14 +20,24 @@ body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
   text-align:center
 }
 
-.content{max-width:1000px;margin:60px auto;padding:0 30px;line-height:1.7}
+.hero-image{
+  width:100%;
+  height:70vh;
+  background:url("images/blood-hero.jpg") center/cover no-repeat;
+}
 
-/* info cards */
+.content{
+  max-width:1000px;
+  margin:60px auto;
+  padding:0 30px;
+  line-height:1.7
+}
+
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:25px;
-  margin-top:50px;
+  margin-top:50px
 }
 
 .card{
@@ -28,21 +45,16 @@ body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
   border-radius:10px;
   padding:25px;
   background:#f8fbff;
-  box-shadow:0 6px 18px rgba(0,0,0,0.05);
+  box-shadow:0 6px 18px rgba(0,0,0,0.05)
 }
 
 .card h3{
   margin-top:0;
-  color:#062f6a;
+  color:#5a0f14
 }
 </style>
-  .hero-image{
-  width:100%;
-  height:70vh;
-  background:url("images/blood-hero.jpg") center/cover no-repeat;
-}
-
 </head>
+
 <body>
 
 <div class="header">
@@ -51,6 +63,8 @@ body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
 </div>
 
 <div class="hero-image"></div>
+
+<div class="content">
   <p>
     The Blood Work program at TDK Research & Consulting focuses on translational,
     blood-based diagnostics and functional assays for complex hemostatic and
@@ -58,19 +72,21 @@ body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
     biochemistry, and protein–protein interaction analysis with computational
     modeling and experimental validation.
   </p>
+
   <p>
     Building on extensive experience in rare bleeding disorders—particularly
     platelet-type von Willebrand disease (PT-VWD)—this platform develops assays
     that move beyond static biomarkers toward <strong>functional,
     mechanism-driven diagnostics</strong>.
   </p>
+
   <p>
     The long-term goal is to enable rapid, mechanism-informed blood diagnostics
     that guide patient stratification and therapeutic decision-making.
   </p>
 
-  <!-- INFO CARDS -->
   <div class="cards">
+
     <div class="card">
       <h3>Platelet-type VWD</h3>
       <p>
@@ -98,8 +114,9 @@ body{margin:0;font-family:Segoe UI,Arial;color:#0a4ea1;background:#fff}
         fail to capture functional defects.
       </p>
     </div>
-  </div>
 
+  </div>
 </div>
+
 </body>
 </html>
