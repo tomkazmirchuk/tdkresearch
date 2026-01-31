@@ -6,99 +6,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-  background: #ffffff;
-  color: #0a4ea1;
+body{
+  margin:0;
+  font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+  background:#ffffff;
+  color:#0a4ea1;
 }
 
 /* TITLE */
-#title-block {
-  background: linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
-  color: white;
-  text-align: center;
-  padding: 22px 40px 18px 40px;
+#title-block{
+  background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
+  color:white;
+  text-align:center;
+  padding:22px 40px 18px 40px;
 }
 
-#title-block h1 { margin: 0; font-size: 38px; }
-#title-block p { margin-top: 8px; font-size: 18px; opacity: 0.9; }
+#title-block h1{margin:0;font-size:38px}
+#title-block p{margin-top:8px;font-size:18px;opacity:0.9}
 
 /* LAYOUT */
-#divisions {
-  display: flex;
-  height: 80vh;
+#divisions{
+  display:flex;
+  height:80vh;
 }
 
 /* LEFT MENU */
-#menu {
-  width: 40%;
-  padding: 50px 40px;
-  background: #ffffff;
+#menu{
+  width:40%;
+  padding:40px;
+  background:#ffffff;
+  overflow-y:auto;
 }
 
 /* MENU ITEMS */
-.menu-item {
-  font-size: 26px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-bottom: 18px;
+.menu-item{
+  font-size:26px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  margin-bottom:18px;
 }
 
 /* SUBMENUS */
-.parent .submenu {
-  max-height: 0;
-  overflow: hidden;
-  margin-left: 20px;
-  transition: max-height 0.4s ease;
+.parent .submenu{
+  max-height:0;
+  overflow:hidden;
+  margin-left:20px;
+  transition:max-height .4s ease;
+}
+.parent:hover .submenu{max-height:200px}
+
+.submenu a{
+  display:block;
+  font-size:16px;
+  color:#4a7fbf;
+  margin:8px 0;
+  text-decoration:none;
 }
 
-.parent:hover .submenu {
-  max-height: 200px;
+/* LINKEDIN PANEL */
+#linkedin-panel{
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid #d6e3f3;
 }
-
-.submenu a {
-  display: block;
-  font-size: 16px;
-  color: #4a7fbf;
-  margin: 8px 0;
-  text-decoration: none;
+#linkedin-panel h3{
+  margin-bottom:15px;
+  font-size:16px;
+  letter-spacing:1px;
+  color:#062f6a;
+  text-transform:uppercase;
 }
-
-.submenu a:hover {
-  text-decoration: underline;
+.li-post{margin-bottom:15px}
+.li-title{margin:0;font-size:14px;font-weight:600}
+.li-meta{margin:2px 0 6px;font-size:12px;color:#6a8fbf}
+.li-post a{font-size:13px;color:#0a4ea1;text-decoration:none}
+.li-profile{
+  display:inline-block;
+  margin-top:10px;
+  font-size:13px;
+  font-weight:600;
+  color:#0a4ea1;
+  text-decoration:none;
 }
 
 /* RIGHT PANEL */
-#image-panel {
-  width: 60%;
-  background: #eef4fb;
-  position: relative;
+#image-panel{
+  width:60%;
+  background:#eef4fb;
+  position:relative;
 }
 
 /* PREVIEW IMAGES */
-.preview {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 350ms ease;
+.preview{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity .35s ease;
 }
-
-.preview.active {
-  opacity: 1;
-}
+.preview.active{opacity:1}
 
 /* DISSOLVE EDGE */
-#mask {
-  position: absolute;
-  left: 0;
-  width: 40px;
-  height: 100%;
-  background: linear-gradient(to right, #ffffff, transparent);
-  z-index: 3;
+#mask{
+  position:absolute;
+  left:0;
+  width:40px;
+  height:100%;
+  background:linear-gradient(to right,#ffffff,transparent);
+  z-index:3;
 }
 </style>
 </head>
@@ -114,7 +131,6 @@ body {
 
   <div id="menu">
 
-    <!-- Biomedical with submenu -->
     <div class="parent">
       <div class="menu-item" data-target="bio">Biomedical Research Division</div>
       <div class="submenu">
@@ -126,7 +142,6 @@ body {
 
     <div class="menu-item" data-target="tech">Technologics Division</div>
 
-    <!-- Communications -->
     <div class="parent">
       <div class="menu-item" data-target="write">Communications Division</div>
       <div class="submenu">
@@ -142,6 +157,33 @@ body {
       <div class="menu-item">Contact</div>
     </a>
 
+    <!-- LINKEDIN PANEL -->
+    <div id="linkedin-panel">
+      <h3>LinkedIn Updates</h3>
+
+      <div class="li-post">
+        <p class="li-title">AI-designed peptides for PT-VWD</p>
+        <p class="li-meta">Recent post</p>
+        <a href="https://www.linkedin.com/in/thomas-kazmirchuk" target="_blank">
+          View on LinkedIn →
+        </a>
+      </div>
+
+      <div class="li-post">
+        <p class="li-title">New ISTH 2024 presentation</p>
+        <p class="li-meta">Recent post</p>
+        <a href="https://www.linkedin.com/in/thomas-kazmirchuk" target="_blank">
+          View on LinkedIn →
+        </a>
+      </div>
+
+      <a class="li-profile"
+         href="https://www.linkedin.com/in/thomas-kazmirchuk"
+         target="_blank">
+        Visit my LinkedIn →
+      </a>
+    </div>
+
   </div>
 
   <div id="image-panel">
@@ -156,14 +198,13 @@ body {
 </div>
 
 <script>
-const items = document.querySelectorAll(".menu-item[data-target]");
-const previews = document.querySelectorAll(".preview");
-
-items.forEach(item => {
-  item.addEventListener("mouseenter", () => {
-    previews.forEach(p => p.classList.remove("active"));
-    const el = document.getElementById(item.dataset.target);
-    if (el) el.classList.add("active");
+const items=document.querySelectorAll(".menu-item[data-target]");
+const previews=document.querySelectorAll(".preview");
+items.forEach(item=>{
+  item.addEventListener("mouseenter",()=>{
+    previews.forEach(p=>p.classList.remove("active"));
+    const el=document.getElementById(item.dataset.target);
+    if(el) el.classList.add("active");
   });
 });
 </script>
