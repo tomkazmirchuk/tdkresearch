@@ -6,245 +6,204 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  margin:0;
-  font-family:"Segoe UI", Helvetica, Arial, sans-serif;
-  background:#ffffff;
-  color:#0a4ea1;
+/* BASE */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #031b3a;
+  color: white;
+  transition: background 0.6s ease, color 0.6s ease;
 }
 
-/* TITLE */
-#title-block{
-  background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
-  color:white;
-  text-align:center;
-  padding:22px 40px 18px 40px;
+/* HEADER */
+header {
+  height: 32vh;
+  background: linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  transition: background 0.6s ease;
 }
-#title-block h1{margin:0;font-size:38px}
-#title-block p{margin-top:8px;font-size:18px;opacity:0.9}
+
+header h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+header p {
+  margin: 10px 0 0;
+  font-size: 1.2em;
+  opacity: 0.9;
+}
+
+/* TOGGLE */
+#modeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all .3s ease;
+}
+#modeToggle:hover {
+  background: rgba(255,255,255,0.3);
+}
 
 /* LAYOUT */
-#divisions{
-  display:flex;
-  height:80vh;
+.main {
+  display: flex;
+  height: calc(100vh - 32vh);
 }
 
-/* LEFT MENU */
-#menu{
-  width:40%;
-  padding:40px;
-  background:#ffffff;
-  overflow-y:auto;
+.left {
+  width: 40%;
+  padding: 30px;
+  overflow-y: auto;
 }
 
-/* MENU ITEMS */
-.menu-item{
-  font-size:26px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  cursor:pointer;
-  margin-bottom:18px;
+.right {
+  width: 60%;
+  position: relative;
 }
 
-/* SUBMENUS */
-.parent .submenu{
-  max-height:0;
-  overflow:hidden;
-  margin-left:20px;
-  transition:max-height .4s ease;
+/* MENU */
+.menu h3 { margin-top: 30px; }
+.menu a {
+  display: block;
+  margin: 8px 0;
+  color: white;
+  text-decoration: none;
+  opacity: .85;
 }
-.parent:hover .submenu{max-height:200px}
+.menu a:hover { opacity: 1; }
 
-.submenu a{
-  display:block;
-  font-size:16px;
-  color:#4a7fbf;
-  margin:8px 0;
-  text-decoration:none;
+/* LINKEDIN */
+.linkedin {
+  margin-top: 40px;
+  display: flex;
+  gap: 12px;
 }
-
-/* LINKEDIN PANEL */
-#linkedin-panel{
-  margin-top:40px;
-  padding-top:20px;
-  border-top:1px solid #d6e3f3;
-  text-align:center;
-}
-#linkedin-panel h3{
-  margin-bottom:15px;
-  font-size:16px;
-  letter-spacing:1px;
-  color:#062f6a;
-  text-transform:uppercase;
+.linkedin div {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 
-.li-row{
-  display:flex;
-  gap:20px;
-  justify-content:space-between;
+/* HOVER PANEL */
+.preview {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity .5s ease;
 }
+.preview.active { opacity: 1; }
 
-.li-post{
-  flex:1;
-  background:#f8fbff;
-  padding:12px;
-  border-radius:8px;
+/* INDUSTRY MODE */
+body.industry {
+  background: #05090f;
+  color: #e6ecff;
 }
-
-.li-title{
-  margin:0;
-  font-size:14px;
-  font-weight:600;
+body.industry header {
+  background: linear-gradient(to right, #02060f, #0a1f44, #000814);
 }
-
-.li-meta{
-  margin:2px 0 6px;
-  font-size:12px;
-  color:#6a8fbf;
-}
-
-.li-post a{
-  font-size:13px;
-  color:#0a4ea1;
-  text-decoration:none;
-}
-
-.li-profile{
-  display:inline-block;
-  margin-top:10px;
-  font-size:13px;
-  font-weight:600;
-  color:#0a4ea1;
-  text-decoration:none;
-}
-
-/* RIGHT PANEL */
-#image-panel{
-  width:60%;
-  background:#eef4fb;
-  position:relative;
-}
-
-/* PREVIEW IMAGES */
-.preview{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:opacity .35s ease;
-}
-.preview.active{opacity:1}
-
-/* DISSOLVE EDGE */
-#mask{
-  position:absolute;
-  left:0;
-  width:40px;
-  height:100%;
-  background:linear-gradient(to right,#ffffff,transparent);
-  z-index:3;
+body.industry .menu a { color: #dbe6ff; }
+body.industry .linkedin div {
+  background: rgba(255,255,255,0.08);
 }
 </style>
 </head>
 
 <body>
 
-<div id="title-block">
-  <h1>TDK Research & Consulting</h1>
-  <p>Leading through passion</p>
-</div>
+<header>
+  <div>
+    <h1>TDK Research & Consulting</h1>
+    <p id="tagline">Leading through passion</p>
+  </div>
+  <button id="modeToggle">Industry View</button>
+</header>
 
-<div id="divisions">
+<div class="main">
 
-  <div id="menu">
+  <!-- LEFT -->
+  <div class="left">
+    <div class="menu">
+      <h3>Biomedical Research Division</h3>
+      <a href="blood-work.html" data-img="bmr">Blood Work</a>
+      <a href="theranostics.html" data-img="bmr">Theranostics</a>
+      <a href="molecular-biology.html" data-img="bmr">Molecular Biology</a>
 
-    <div class="parent">
-      <div class="menu-item" data-target="bio">Biomedical Research Division</div>
-      <div class="submenu">
-        <a href="blood-work.html">Blood Work</a>
-        <a href="theranostics.html">Theranostics</a>
-        <a href="molecular-biology.html">Molecular Biology</a>
-      </div>
+      <h3>Technologics Division</h3>
+
+      <h3>Communications Division</h3>
+      <a href="publications.html" data-img="writing">Publications</a>
+      <a href="posters.html" data-img="writing">Conference Abstracts & Posters</a>
+      <a href="lectures.html" data-img="writing">Lectures & Seminars</a>
+
+      <h3>Consulting & Contracting</h3>
+      <h3>Community Initiatives</h3>
+      <h3><a href="contact.html">Contact</a></h3>
     </div>
 
-    <div class="menu-item" data-target="tech">Technologics Division</div>
-
-    <div class="parent">
-      <div class="menu-item" data-target="write">Communications Division</div>
-      <div class="submenu">
-        <a href="publications.html">Publications</a>
-        <a href="posters.html">Conference Abstracts & Posters</a>
-        <a href="lectures.html">Lectures & Seminars</a>
-      </div>
+    <div class="linkedin">
+      <div onclick="window.open('https://www.linkedin.com/in/thomas-kazmirchuk')">Update 1</div>
+      <div onclick="window.open('https://www.linkedin.com/in/thomas-kazmirchuk')">Update 2</div>
+      <div onclick="window.open('https://www.linkedin.com/in/thomas-kazmirchuk')">Update 3</div>
     </div>
-
-    <div class="menu-item" data-target="consult">Consulting & Contracting</div>
-    <div class="menu-item" data-target="community">Community Initiatives</div>
-    <a href="contact.html" style="text-decoration:none">
-      <div class="menu-item">Contact</div>
-    </a>
-
-    <!-- LINKEDIN PANEL -->
-    <div id="linkedin-panel">
-      <h3>LinkedIn Updates</h3>
-
-      <div class="li-row">
-        <div class="li-post">
-          <p class="li-title">Leader of the Pack</p>
-          <p class="li-meta">Recent post</p>
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7411074010211381248/" target="_blank">
-            View →
-          </a>
-        </div>
-
-        <div class="li-post">
-          <p class="li-title">Hemostasis today post</p>
-          <p class="li-meta">Recent post</p>
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7374093421247893504/" target="_blank">
-            View →
-          </a>
-        </div>
-
-        <div class="li-post">
-          <p class="li-title">New Blood Advances publication online!</p>
-          <p class="li-meta">Recent publication</p>
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7372343339586723840/" target="_blank">
-            View →
-          </a>
-        </div>
-      </div>
-
-      <a class="li-profile"
-         href="https://www.linkedin.com/in/thomas-kazmirchuk"
-         target="_blank">
-        Visit my LinkedIn →
-      </a>
-    </div>
-
   </div>
 
-  <div id="image-panel">
-    <div id="mask"></div>
-    <div id="bio" class="preview" style="background-image:url('images/BMR_Headshot.jpg')"></div>
-    <div id="write" class="preview" style="background-image:url('images/writing.jpg')"></div>
-    <div id="consult" class="preview" style="background-image:url('images/consulting.jpg')"></div>
-    <div id="community" class="preview" style="background-image:url('images/community.jpg')"></div>
-    <div id="tech" class="preview"></div>
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="preview active" id="bmr" style="background-image:url('/images/BMR_Headshot.jpg')"></div>
+    <div class="preview" id="writing" style="background-image:url('/images/writing.jpg')"></div>
+    <div class="preview" id="consulting" style="background-image:url('/images/consulting.jpg')"></div>
+    <div class="preview" id="community" style="background-image:url('/images/community.jpg')"></div>
   </div>
 
 </div>
 
 <script>
-const items=document.querySelectorAll(".menu-item[data-target]");
-const previews=document.querySelectorAll(".preview");
-items.forEach(item=>{
-  item.addEventListener("mouseenter",()=>{
-    previews.forEach(p=>p.classList.remove("active"));
-    const el=document.getElementById(item.dataset.target);
-    if(el) el.classList.add("active");
+/* IMAGE HOVER */
+document.querySelectorAll(".menu a[data-img]").forEach(link => {
+  link.addEventListener("mouseenter", () => {
+    document.querySelectorAll(".preview").forEach(p => p.classList.remove("active"));
+    document.getElementById(link.dataset.img).classList.add("active");
   });
 });
+
+/* MODE TOGGLE */
+const btn = document.getElementById("modeToggle");
+let mode = localStorage.getItem("tdkMode") || "research";
+
+function applyMode(m) {
+  document.body.classList.remove("research", "industry");
+  document.body.classList.add(m);
+  btn.textContent = m === "research" ? "Industry View" : "Research View";
+  document.getElementById("tagline").textContent =
+    m === "research"
+      ? "Leading through passion"
+      : "Engineering the future of medicine";
+  localStorage.setItem("tdkMode", m);
+}
+
+btn.onclick = () => {
+  mode = mode === "research" ? "industry" : "research";
+  applyMode(mode);
+};
+
+applyMode(mode);
 </script>
 
 </body>
