@@ -2,135 +2,104 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Conference Abstracts & Posters – TDK Research & Consulting</title>
+<title>Conference Abstracts & Posters | TDK Research & Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  margin:0;
-  font-family:Segoe UI, Arial, sans-serif;
-  background:#f7f9fc;
-  color:#0a4ea1;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #031b3a;
+  color: white;
 }
 
 /* HEADER */
-.header{
+header {
+  height: 40vh;
   background: linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
-  color:#fff;
-  padding:50px 30px;
-  text-align:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-/* LAYOUT */
-.container{
-  max-width:1200px;
-  margin:60px auto;
-  padding:0 25px;
+header h1 {
+  font-size: 3em;
+  margin: 0;
 }
 
 /* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+.section {
+  padding: 60px;
 }
 
-/* POSTER CARD */
-.card{
-  background:#fff;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:transform .2s ease, box-shadow .2s ease;
-  cursor:pointer;
-}
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 16px 40px rgba(0,0,0,0.12);
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
 }
 
-.thumb{
-  width:100%;
-  height:340px;
-  background:#ddd center/contain no-repeat;
+.poster-card {
+  height: 360px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease;
+  border-radius: 12px;
+  background-color: rgba(255,255,255,0.03);
 }
 
-
-.card-body{
-  padding:16px 18px;
+.poster-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 30px rgba(10,78,161,0.4);
 }
 
-.card-body h3{
-  margin:0 0 6px 0;
-  font-size:17px;
-  color:#062f6a;
-}
-
-.card-body p{
-  margin:0;
-  font-size:14px;
-  color:#4a6fa1;
-}
-
-.back{
-  text-align:center;
-  margin:50px 0 20px 0;
-}
-.back a{
-  text-decoration:none;
-  color:#0a4ea1;
-  font-weight:600;
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 0.9em;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<header>
   <h1>Conference Abstracts & Posters</h1>
-  <p>Selected scientific presentations</p>
-</div>
+</header>
 
-<div class="container">
+<section class="section">
+  <div class="poster-grid" id="posterGrid"></div>
+</section>
 
-  <div class="grid">
+<footer>
+  © 2026 TDK Research & Consulting
+</footer>
 
-    <!-- POSTER 1 -->
-<div class="card" onclick="return false;">
-  <div class="thumb" style="background-image:url('posters/poster1.jpg')"></div>
-  <div class="card-body">
-    <h3>AI-Designed Peptides for PT-VWD</h3>
-    <p>ISLH • 2023</p>
-  </div>
-</div>
+<script>
+fetch("/data/data.json")
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById("posterGrid");
 
-    <!-- POSTER 2 -->
-    <div class="card" onclick="window.open('posters/poster2.pdf','_blank')">
-      <div class="thumb" style="background-image:url('posters/poster2.jpg')"></div>
-      <div class="card-body">
-        <h3>Disrupting GPIbα–VWF Interactions</h3>
-        <p>ISLH • 2024</p>
-      </div>
-    </div>
-    
- <!-- POSTER 3 -->
-  <div class="card" onclick="window.open('posters/poster3.pdf','_blank')">
-  <div class="thumb" style="background-image:url('posters/poster3.jpg')"></div>
-  <div class="card-body">
-    <h3>Discovery of a novel interaction site between GPIba and VWF</h3>
-    <p>ISTH • 2025</p>
-  </div>
-</div>
+    data.posters.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "poster-card";
+      card.style.backgroundImage = `url('${p.image}')`;
+      card.title = p.title;
 
+      if (p.pdf) {
+        card.onclick = () => window.open(p.pdf, "_blank");
+      }
 
-
-  </div>
-
-  <div class="back">
-    <a href="index.html">← Back to Home</a>
-  </div>
-
-</div>
+      grid.appendChild(card);
+    });
+  })
+  .catch(err => console.error("Poster load error:", err));
+</script>
 
 </body>
 </html>
