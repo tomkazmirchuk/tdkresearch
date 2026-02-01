@@ -1,0 +1,44 @@
+{
+  "posters": [
+    {
+      "id": "poster1",
+      "title": "AI-Designed Peptide Therapeutics for PT-VWD",
+      "image": "/posters/poster1.jpg",
+      "pdf": null,
+      "year": 2025,
+      "tags": ["PT-VWD", "AI", "Peptides"]
+    },
+    {
+      "id": "poster3",
+      "title": "Noncanonical VWF-C4 Interactions in PT-VWD",
+      "image": "/posters/poster3.jpg",
+      "pdf": "/posters/poster3.pdf",
+      "year": 2024,
+      "tags": ["VWF", "GPIbα", "Hematology"]
+    }
+  ],
+
+  "lectures": [
+    {
+      "id": "talk1",
+      "title": "AI Peptide Design for Rare Bleeding Disorders",
+      "youtube": "l8-L_j6Pk2A",
+      "year": 2025
+    },
+    {
+      "id": "talk2",
+      "title": "Platelet-Type VWD: New Mechanisms",
+      "youtube": "cRilwvsnEBE",
+      "year": 2024
+    }
+  ],
+
+  "publications": [
+    {
+      "title": "AI-generated peptide therapeutics for PT-VWD",
+      "journal": "Blood Advances",
+      "year": 2025,
+      "link": "#"
+    }
+  ]
+}
