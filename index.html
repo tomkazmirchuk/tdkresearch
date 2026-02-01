@@ -18,14 +18,19 @@ body {
 /* HEADER */
 header {
   height: 32vh;
-  background: linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
+  background:
+    url("/images/dna-pattern.svg"),
+    linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
+  background-size: 1200px 200px, cover;
+  background-repeat: repeat-x, no-repeat;
+  background-position: left center, center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   color: white;
-  transition: background 0.6s ease;
+  transition: background 0.8s ease;
 }
 
 header h1 {
@@ -116,19 +121,19 @@ header p {
 }
 .preview.active { opacity: 1; }
 
-/* INDUSTRY MODE (light premium) */
+/* INDUSTRY MODE */
 body.industry {
   background: #f3f5f9;
   color: #1b2b4a;
 }
-
-body.industry .left { background: #f7f9fc; }
-body.industry .right { background: #e9edf5; }
-
 body.industry header {
-  background: linear-gradient(to right, #0a1f44, #123b78, #0a1f44);
+  background:
+    url("/images/circuit-pattern.svg"),
+    linear-gradient(to right, #0a1f44, #123b78, #0a1f44);
+  background-size: 1200px 200px, cover;
+  background-repeat: repeat-x, no-repeat;
+  background-position: left center, center;
 }
-
 body.industry .menu h3 { color: #0a1f44; }
 body.industry .menu a { color: #123b78; }
 body.industry .linkedin div { background: #e6ebf5; }
@@ -147,7 +152,6 @@ body.industry .linkedin div { background: #e6ebf5; }
 
 <div class="main">
 
-  <!-- LEFT -->
   <div class="left">
     <div class="menu">
       <h3>Biomedical Research Division</h3>
@@ -174,7 +178,6 @@ body.industry .linkedin div { background: #e6ebf5; }
     </div>
   </div>
 
-  <!-- RIGHT -->
   <div class="right">
     <div class="preview active" id="bmr" style="background-image:url('/images/BMR_Headshot.jpg')"></div>
     <div class="preview" id="writing" style="background-image:url('/images/writing.jpg')"></div>
