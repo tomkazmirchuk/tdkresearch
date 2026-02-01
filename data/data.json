@@ -1,3 +1,14 @@
+"modes": {
+  "research": {
+    "tagline": "Leading through passion",
+    "theme": "research"
+  },
+  "industry": {
+    "tagline": "Engineering the future of medicine",
+    "theme": "industry"
+  }
+},
+
 {
   "posters": [
     {
