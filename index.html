@@ -10,8 +10,8 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #031b3a;
-  color: white;
+  background: #ffffff;
+  color: #0a2540;
   transition: background 0.6s ease, color 0.6s ease;
 }
 
@@ -24,6 +24,7 @@ header {
   justify-content: center;
   text-align: center;
   position: relative;
+  color: white;
   transition: background 0.6s ease;
 }
 
@@ -43,44 +44,48 @@ header p {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.25);
   color: white;
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.6);
   padding: 8px 14px;
   border-radius: 20px;
   cursor: pointer;
   backdrop-filter: blur(8px);
   transition: all .3s ease;
 }
-#modeToggle:hover {
-  background: rgba(255,255,255,0.3);
-}
+#modeToggle:hover { background: rgba(255,255,255,0.45); }
 
 /* LAYOUT */
 .main {
   display: flex;
   height: calc(100vh - 32vh);
+  background: white;
 }
 
 .left {
   width: 40%;
   padding: 30px;
   overflow-y: auto;
+  background: #ffffff;
 }
 
 .right {
   width: 60%;
   position: relative;
+  background: #f4f7fb;
 }
 
 /* MENU */
-.menu h3 { margin-top: 30px; }
+.menu h3 {
+  margin-top: 30px;
+  color: #062f6a;
+}
 .menu a {
   display: block;
   margin: 8px 0;
-  color: white;
+  color: #083b82;
   text-decoration: none;
-  opacity: .85;
+  opacity: .9;
 }
 .menu a:hover { opacity: 1; }
 
@@ -92,11 +97,12 @@ header p {
 }
 .linkedin div {
   flex: 1;
-  background: rgba(255,255,255,0.05);
+  background: #f0f4fb;
   padding: 14px;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  color: #062f6a;
 }
 
 /* HOVER PANEL */
@@ -110,18 +116,22 @@ header p {
 }
 .preview.active { opacity: 1; }
 
-/* INDUSTRY MODE */
+/* INDUSTRY MODE (light premium) */
 body.industry {
-  background: #05090f;
-  color: #e6ecff;
+  background: #f3f5f9;
+  color: #1b2b4a;
 }
+
+body.industry .left { background: #f7f9fc; }
+body.industry .right { background: #e9edf5; }
+
 body.industry header {
-  background: linear-gradient(to right, #02060f, #0a1f44, #000814);
+  background: linear-gradient(to right, #0a1f44, #123b78, #0a1f44);
 }
-body.industry .menu a { color: #dbe6ff; }
-body.industry .linkedin div {
-  background: rgba(255,255,255,0.08);
-}
+
+body.industry .menu h3 { color: #0a1f44; }
+body.industry .menu a { color: #123b78; }
+body.industry .linkedin div { background: #e6ebf5; }
 </style>
 </head>
 
@@ -188,7 +198,7 @@ const btn = document.getElementById("modeToggle");
 let mode = localStorage.getItem("tdkMode") || "research";
 
 function applyMode(m) {
-  document.body.classList.remove("research", "industry");
+  document.body.classList.remove("research","industry");
   document.body.classList.add(m);
   btn.textContent = m === "research" ? "Industry View" : "Research View";
   document.getElementById("tagline").textContent =
