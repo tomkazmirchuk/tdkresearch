@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="240" viewBox="0 0 1400 240">
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="white" stop-opacity="0.9"/>
+      <stop offset="42%" stop-color="white" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="white" stop-opacity="0"/>
+      <stop offset="58%" stop-color="white" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <circle id="signal" r="3" fill="#e8fbff"/>
+  </defs>
+
+  <!-- LEFT PCB -->
+  <g stroke="#9fd9ff" stroke-width="2.8" fill="none" filter="url(#glow)">
+    <path id="l1" d="M0 40 H160 V80 H420"/>
+    <path id="l2" d="M0 80 H200 V120 H480"/>
+    <path id="l3" d="M0 120 H240 V160 H520"/>
+    <path id="l4" d="M0 160 H180 V200 H460"/>
+    <path id="l5" d="M0 200 H120 V160 H400"/>
+    <path id="l6" d="M0 60 H140 V140 H360"/>
+    <path id="l7" d="M0 100 H220 V60 H500"/>
+  </g>
+
+  <!-- RIGHT PCB -->
+  <g stroke="#9fd9ff" stroke-width="2.8" fill="none" filter="url(#glow)">
+    <path id="r1" d="M1400 40 H1240 V80 H980"/>
+    <path id="r2" d="M1400 80 H1200 V120 H920"/>
+    <path id="r3" d="M1400 120 H1160 V160 H880"/>
+    <path id="r4" d="M1400 160 H1220 V200 H940"/>
+    <path id="r5" d="M1400 200 H1280 V160 H1000"/>
+    <path id="r6" d="M1400 60 H1260 V140 H1040"/>
+    <path id="r7" d="M1400 100 H1180 V60 H900"/>
+  </g>
+
+  <!-- VIA PADS -->
+  <g fill="#c6ecff">
+    <circle cx="160" cy="80" r="5"/>
+    <circle cx="200" cy="120" r="5"/>
+    <circle cx="240" cy="160" r="5"/>
+    <circle cx="180" cy="200" r="5"/>
+    <circle cx="140" cy="140" r="5"/>
+    <circle cx="220" cy="60" r="5"/>
+
+    <circle cx="1240" cy="80" r="5"/>
+    <circle cx="1200" cy="120" r="5"/>
+    <circle cx="1160" cy="160" r="5"/>
+    <circle cx="1220" cy="200" r="5"/>
+    <circle cx="1260" cy="140" r="5"/>
+    <circle cx="1180" cy="60" r="5"/>
+  </g>
+
+  <!-- SIGNALS -->
+  <g>
+    <use href="#signal">
+      <animateMotion dur="6s" repeatCount="indefinite">
+        <mpath href="#l1"/>
+      </animateMotion>
+    </use>
+    <use href="#signal">
+      <animateMotion dur="7s" repeatCount="indefinite">
+        <mpath href="#l3"/>
+      </animateMotion>
+    </use>
+    <use href="#signal">
+      <animateMotion dur="8s" repeatCount="indefinite">
+        <mpath href="#r2"/>
+      </animateMotion>
+    </use>
+    <use href="#signal">
+      <animateMotion dur="9s" repeatCount="indefinite">
+        <mpath href="#r5"/>
+      </animateMotion>
+    </use>
+  </g>
+
+  <!-- CENTER FADE -->
+  <rect width="1400" height="240" fill="url(#fade)" opacity="0.35"/>
+</svg>
