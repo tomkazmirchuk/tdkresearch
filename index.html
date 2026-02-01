@@ -15,33 +15,31 @@ body {
   transition: background 0.6s ease, color 0.6s ease;
 }
 
-/* HEADER */
+/* HEADER WITH DNA */
 header {
   height: 32vh;
   background:
-    url("/images/dna-pattern.svg"),
+    url("/images/dna-header.svg"),
     linear-gradient(to right, #062f6a, #0a4ea1, #083b82);
-  background-size: 1200px 200px, cover;
+  background-size: contain, cover;
   background-repeat: repeat-x, no-repeat;
-  background-position: left center, center;
+  background-position: center, center;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   color: white;
-  transition: background 0.8s ease;
 }
 
-header h1 {
-  font-size: 3em;
-  margin: 0;
-}
-
-header p {
-  margin: 10px 0 0;
-  font-size: 1.2em;
-  opacity: 0.9;
+/* INDUSTRY MODE HEADER */
+body.industry header {
+  background:
+    url("/images/circuit-header.svg"),
+    linear-gradient(to right, #0a1f44, #123b78, #0a1f44);
+  background-size: contain, cover;
+  background-repeat: repeat-x, no-repeat;
+  background-position: center, center;
 }
 
 /* TOGGLE */
@@ -61,82 +59,21 @@ header p {
 #modeToggle:hover { background: rgba(255,255,255,0.45); }
 
 /* LAYOUT */
-.main {
-  display: flex;
-  height: calc(100vh - 32vh);
-  background: white;
-}
-
-.left {
-  width: 40%;
-  padding: 30px;
-  overflow-y: auto;
-  background: #ffffff;
-}
-
-.right {
-  width: 60%;
-  position: relative;
-  background: #f4f7fb;
-}
+.main { display: flex; height: calc(100vh - 32vh); }
+.left { width: 40%; padding: 30px; overflow-y: auto; }
+.right { width: 60%; position: relative; background: #f4f7fb; }
 
 /* MENU */
-.menu h3 {
-  margin-top: 30px;
-  color: #062f6a;
-}
-.menu a {
-  display: block;
-  margin: 8px 0;
-  color: #083b82;
-  text-decoration: none;
-  opacity: .9;
-}
-.menu a:hover { opacity: 1; }
+.menu h3 { margin-top: 30px; color: #062f6a; }
+.menu a { display:block; margin:8px 0; color:#083b82; text-decoration:none; }
 
 /* LINKEDIN */
-.linkedin {
-  margin-top: 40px;
-  display: flex;
-  gap: 12px;
-}
-.linkedin div {
-  flex: 1;
-  background: #f0f4fb;
-  padding: 14px;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-  color: #062f6a;
-}
+.linkedin { margin-top: 40px; display:flex; gap:12px; }
+.linkedin div { flex:1; background:#f0f4fb; padding:14px; border-radius:10px; text-align:center; cursor:pointer; }
 
 /* HOVER PANEL */
-.preview {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity .5s ease;
-}
-.preview.active { opacity: 1; }
-
-/* INDUSTRY MODE */
-body.industry {
-  background: #f3f5f9;
-  color: #1b2b4a;
-}
-body.industry header {
-  background:
-    url("/images/circuit-pattern.svg"),
-    linear-gradient(to right, #0a1f44, #123b78, #0a1f44);
-  background-size: 1200px 200px, cover;
-  background-repeat: repeat-x, no-repeat;
-  background-position: left center, center;
-}
-body.industry .menu h3 { color: #0a1f44; }
-body.industry .menu a { color: #123b78; }
-body.industry .linkedin div { background: #e6ebf5; }
+.preview { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:.5s; }
+.preview.active { opacity:1; }
 </style>
 </head>
 
@@ -188,34 +125,24 @@ body.industry .linkedin div { background: #e6ebf5; }
 </div>
 
 <script>
-/* IMAGE HOVER */
-document.querySelectorAll(".menu a[data-img]").forEach(link => {
-  link.addEventListener("mouseenter", () => {
-    document.querySelectorAll(".preview").forEach(p => p.classList.remove("active"));
+document.querySelectorAll(".menu a[data-img]").forEach(link=>{
+  link.addEventListener("mouseenter",()=>{
+    document.querySelectorAll(".preview").forEach(p=>p.classList.remove("active"));
     document.getElementById(link.dataset.img).classList.add("active");
   });
 });
 
-/* MODE TOGGLE */
-const btn = document.getElementById("modeToggle");
-let mode = localStorage.getItem("tdkMode") || "research";
-
-function applyMode(m) {
-  document.body.classList.remove("research","industry");
-  document.body.classList.add(m);
-  btn.textContent = m === "research" ? "Industry View" : "Research View";
-  document.getElementById("tagline").textContent =
-    m === "research"
-      ? "Leading through passion"
-      : "Engineering the future of medicine";
-  localStorage.setItem("tdkMode", m);
+const btn=document.getElementById("modeToggle");
+let mode=localStorage.getItem("tdkMode")||"research";
+function applyMode(m){
+  document.body.classList.remove("industry");
+  if(m==="industry") document.body.classList.add("industry");
+  btn.textContent=m==="research"?"Industry View":"Research View";
+  document.getElementById("tagline").textContent=
+    m==="research"?"Leading through passion":"Engineering the future of medicine";
+  localStorage.setItem("tdkMode",m);
 }
-
-btn.onclick = () => {
-  mode = mode === "research" ? "industry" : "research";
-  applyMode(mode);
-};
-
+btn.onclick=()=>{mode=mode==="research"?"industry":"research";applyMode(mode);};
 applyMode(mode);
 </script>
 
