@@ -1,16 +1,50 @@
-"lectures": [
-  {
-    "id": "talk1",
-    "title": "Designing the future of medicine",
-    "subtitle": "McMaster University Appetizers for the Mind (2025)",
-    "youtube": "l8-L_j6Pk2A",
-    "year": 2025
-  },
-  {
-    "id": "talk2",
-    "title": "From Computational Design to Blood-Based Diagnostics",
-    "subtitle": "Carleton University Post-doc talk competition (2024)",
-    "youtube": "cRilwvsnEBE",
-    "year": 2024
-  }
-]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lectures & Seminars | TDK Research & Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:Arial;background:#031b3a;color:white}
+header{height:40vh;background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);display:flex;align-items:center;justify-content:center}
+.section{padding:60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:28px}
+.card{background:rgba(255,255,255,0.04);border-radius:16px;overflow:hidden;box-shadow:0 0 25px rgba(10,78,161,0.4)}
+.thumb iframe{width:100%;height:220px;border:none}
+.card-body{padding:16px}
+.card-body h3{margin:0 0 6px}
+.card-body p{margin:0;font-size:.9em;opacity:.8}
+</style>
+</head>
+
+<body>
+
+<header><h1>Lectures & Seminars</h1></header>
+
+<section class="section">
+  <div class="grid" id="videoGrid"></div>
+</section>
+
+<script>
+fetch("/data/data.json")
+.then(r=>r.json())
+.then(d=>{
+  const g=document.getElementById("videoGrid");
+  d.lectures.forEach(v=>{
+    const c=document.createElement("div");
+    c.className="card";
+    c.innerHTML=`
+      <div class="thumb">
+        <iframe src="https://www.youtube.com/embed/${v.youtube}" allowfullscreen></iframe>
+      </div>
+      <div class="card-body">
+        <h3>${v.title}</h3>
+        <p>${v.subtitle}</p>
+      </div>`;
+    g.appendChild(c);
+  });
+});
+</script>
+
+</body>
+</html>
