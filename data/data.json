@@ -10,6 +10,24 @@
     }
   },
 
+  "news": [
+    {
+      "title": "Invited McMaster talk on AI-designed peptide therapeutics",
+      "date": "2025-01-12",
+      "link": "https://www.linkedin.com/in/thomas-kazmirchuk"
+    },
+    {
+      "title": "Poster accepted at ISTH 2025",
+      "date": "2024-11-02",
+      "link": "https://www.linkedin.com/in/thomas-kazmirchuk"
+    },
+    {
+      "title": "Designed Biologics platform reaches prototype milestone",
+      "date": "2024-09-18",
+      "link": "https://tdkresearch.com"
+    }
+  ],
+
   "posters": [
     {
       "id": "poster1",
@@ -33,12 +51,14 @@
     {
       "id": "talk1",
       "title": "AI Peptide Design for Rare Bleeding Disorders",
+      "subtitle": "McMaster University Appetizers for the Mind (2025)",
       "youtube": "l8-L_j6Pk2A",
       "year": 2025
     },
     {
       "id": "talk2",
       "title": "Platelet-Type VWD: New Mechanisms",
+      "subtitle": "Carleton University Post-doc talk competition (2024)",
       "youtube": "cRilwvsnEBE",
       "year": 2024
     }
