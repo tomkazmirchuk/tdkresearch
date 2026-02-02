@@ -7,48 +7,53 @@
 
 <style>
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#0a2540}
+
 header{
   height:16vh;
   background:
     url("/images/dna-header.svg"),
     linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
-  background-size:contain,cover;
-  background-repeat:repeat-x,no-repeat;
+  background-size:cover,cover;   /* FIX: no tiling */
+  background-repeat:no-repeat,no-repeat; /* FIX */
   background-position:center,center;
   display:flex;align-items:center;justify-content:center;
   color:#fff;position:relative;text-align:center
 }
+
 body.industry header{
   background:
     url("/images/circuit-header.svg"),
     linear-gradient(to right,#0a1f44,#123b78,#0a1f44);
+  background-size:cover,cover;
+  background-repeat:no-repeat,no-repeat;
 }
-#modeToggle{position:absolute;top:20px;right:20px;padding:8px 14px;border-radius:20px;
-  background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.6);color:#fff;cursor:pointer}
+
+#modeToggle{
+  position:absolute;top:20px;right:20px;
+  padding:8px 14px;border-radius:20px;
+  background:rgba(255,255,255,.25);
+  border:1px solid rgba(255,255,255,.6);
+  color:#fff;cursor:pointer
+}
 
 .main{display:flex;height:calc(100vh - 16vh)}
 .left{width:40%;padding:30px;overflow-y:auto}
 .right{width:60%;position:relative;background:#f4f7fb}
 
-.menu h3{
-  cursor:pointer;color:#062f6a;margin-top:26px;
-  font-size:1.9em;font-weight:600
-}
-.submenu{max-height:0;overflow:hidden;transition:max-height .3s ease;margin-left:10px}
-.menu h3:hover+.submenu,
-.menu h3:focus+.submenu,
-.submenu:hover{max-height:400px}
-.menu a{
-  display:block;margin:10px 0;color:#083b82;
-  text-decoration:none;font-size:1.35em
-}
+.menu h3{cursor:pointer;color:#062f6a;margin-top:26px;font-size:1.9em}
+.submenu{max-height:0;overflow:hidden;transition:max-height .3s}
+.menu h3:hover+.submenu,.submenu:hover{max-height:400px}
+.menu a{display:block;margin:10px 0;color:#083b82;text-decoration:none;font-size:1.35em}
 
 .preview{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.5s}
 .preview.active{opacity:1}
 
 .news{margin-top:30px;display:flex;gap:12px}
 .news div{flex:1;background:#f0f4fb;padding:14px;border-radius:10px;cursor:pointer;font-size:.9em}
-.footer{background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);color:#fff;text-align:center;padding:20px}
+
+.footer{background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
+  color:#fff;text-align:center;padding:20px}
+
 </style>
 </head>
 
@@ -63,18 +68,16 @@ body.industry header{
 </header>
 
 <div class="main">
+  <div class="left">
+    <div class="menu" id="menu"></div>
+    <div class="news" id="newsFeed"></div>
+  </div>
 
-<div class="left">
-  <div class="menu" id="menu"></div>
-  <div class="news" id="newsFeed"></div>
-</div>
-
-<div class="right">
-  <div class="preview active" id="bmr" style="background-image:url('/images/BMR_Headshot.jpg')"></div>
-  <div class="preview" id="writing" style="background-image:url('/images/writing.jpg')"></div>
-  <div class="preview" id="consulting" style="background-image:url('/images/consulting.jpg')"></div>
-</div>
-
+  <div class="right">
+    <div class="preview active" id="bmr" style="background-image:url('/images/BMR_Headshot.jpg')"></div>
+    <div class="preview" id="writing" style="background-image:url('/images/writing.jpg')"></div>
+    <div class="preview" id="consulting" style="background-image:url('/images/consulting.jpg')"></div>
+  </div>
 </div>
 
 <div class="footer">Contact: <strong>tomkazmirchuk@gmail.com</strong></div>
@@ -109,13 +112,14 @@ function buildMenu(mode){
   wrap.innerHTML="";
   menus[mode].forEach(sec=>{
     const h=document.createElement("h3");
-    h.tabIndex=0;h.textContent=sec.title;
+    h.textContent=sec.title;
     wrap.appendChild(h);
     if(sec.items.length){
-      const sub=document.createElement("div");sub.className="submenu";
+      const sub=document.createElement("div");
+      sub.className="submenu";
       sec.items.forEach(i=>{
         const a=document.createElement("a");
-        a.href=i.l;a.textContent=i.t;a.dataset.img=i.img;
+        a.href=i.l;a.textContent=i.t;
         a.onmouseenter=()=>show(i.img);
         sub.appendChild(a);
       });
