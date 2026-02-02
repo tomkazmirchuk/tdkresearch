@@ -8,7 +8,7 @@
 <style>
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#0a2540}
 header{
-  height:32vh;
+  height:16vh; /* was 32vh */
   background:
     url("/images/dna-header.svg"),
     linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
@@ -26,7 +26,7 @@ body.industry header{
 #modeToggle{position:absolute;top:20px;right:20px;padding:8px 14px;border-radius:20px;
   background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.6);color:#fff;cursor:pointer}
 
-.main{display:flex;height:calc(100vh - 32vh)}
+.main{display:flex;height:calc(100vh - 16vh)}
 .left{width:40%;padding:30px;overflow-y:auto}
 .right{width:60%;position:relative;background:#f4f7fb}
 
@@ -48,6 +48,11 @@ body.industry header{
 
 .news{margin-top:30px;display:flex;gap:12px}
 .news div{flex:1;background:#f0f4fb;padding:14px;border-radius:10px;cursor:pointer;font-size:.9em}
+
+.footer{
+  background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
+  color:#fff;text-align:center;padding:20px;font-size:1em
+}
 </style>
 </head>
 
@@ -75,8 +80,7 @@ body.industry header{
 
       <h3 tabindex="0">Technologics Division</h3>
       <div class="submenu">
-        <a href="#" data-img="consulting">AI Platforms</a>
-        <a href="#" data-img="consulting">Data Engineering</a>
+        <a href="#" data-img="consulting">EMD</a>
       </div>
 
       <h3 tabindex="0">Communications Division</h3>
@@ -88,7 +92,6 @@ body.industry header{
 
       <h3 tabindex="0">Consulting & Contracting</h3>
       <h3 tabindex="0">Community Initiatives</h3>
-      <h3><a href="contact.html">Contact</a></h3>
 
     </div>
 
@@ -101,6 +104,10 @@ body.industry header{
     <div class="preview" id="consulting" style="background-image:url('/images/consulting.jpg')"></div>
   </div>
 
+</div>
+
+<div class="footer">
+  Contact: <strong>tomkazmirchuk@gmail.com</strong>
 </div>
 
 <script>
