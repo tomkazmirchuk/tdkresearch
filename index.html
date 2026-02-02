@@ -13,13 +13,12 @@ header{
   background:
     url("/images/dna-header.svg"),
     linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
-  background-size:cover,cover;   /* FIX: no tiling */
-  background-repeat:no-repeat,no-repeat; /* FIX */
+  background-size:cover,cover;
+  background-repeat:no-repeat,no-repeat;
   background-position:center,center;
   display:flex;align-items:center;justify-content:center;
   color:#fff;position:relative;text-align:center
 }
-
 body.industry header{
   background:
     url("/images/circuit-header.svg"),
@@ -51,9 +50,20 @@ body.industry header{
 .news{margin-top:30px;display:flex;gap:12px}
 .news div{flex:1;background:#f0f4fb;padding:14px;border-radius:10px;cursor:pointer;font-size:.9em}
 
+.contact-wrap{margin-top:30px;background:#fafafa;padding:24px;border-radius:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,.06);display:none}
+.contact-wrap h2{margin-bottom:6px;color:#062f6a}
+.contact-sub{color:#555;margin-bottom:16px}
+.contact-form .row{display:flex;gap:12px}
+.contact-form label{font-weight:600;font-size:.9em}
+.contact-form input,.contact-form textarea{
+  width:100%;padding:10px;border-radius:8px;border:1px solid #ccc}
+.contact-form button{
+  margin-top:14px;background:#0a4ea1;color:#fff;border:none;
+  padding:10px 22px;border-radius:20px;cursor:pointer}
+
 .footer{background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
   color:#fff;text-align:center;padding:20px}
-
 </style>
 </head>
 
@@ -70,7 +80,25 @@ body.industry header{
 <div class="main">
   <div class="left">
     <div class="menu" id="menu"></div>
+
     <div class="news" id="newsFeed"></div>
+
+    <div class="contact-wrap" id="contactForm">
+      <h2>Contact</h2>
+      <p class="contact-sub">
+        Interested in collaborating or developing technologies?
+      </p>
+      <form action="https://formsubmit.co/tomkazmirchuk@gmail.com" method="POST" class="contact-form">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="row">
+          <div><label>Full Name</label><input type="text" name="name" required></div>
+          <div><label>Email</label><input type="email" name="email" required></div>
+        </div>
+        <label>Details</label>
+        <textarea name="message" rows="4" placeholder="Describe your inquiry..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
 
   <div class="right">
@@ -142,6 +170,10 @@ function apply(m){
   document.getElementById("tagline").textContent=
     m==="research"?"Leading through passion":"Built from discovery.";
   buildMenu(m);
+  document.getElementById("newsFeed").style.display =
+    m==="research" ? "flex" : "none";
+  document.getElementById("contactForm").style.display =
+    m==="industry" ? "block" : "none";
   localStorage.setItem("tdkMode",m);
 }
 btn.onclick=()=>{mode=mode==="research"?"industry":"research";apply(mode);};
