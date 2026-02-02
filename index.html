@@ -30,12 +30,18 @@ body.industry header{
 .left{width:40%;padding:30px;overflow-y:auto}
 .right{width:60%;position:relative;background:#f4f7fb}
 
-.menu h3{cursor:pointer;color:#062f6a;margin-top:20px}
+.menu h3{
+  cursor:pointer;color:#062f6a;margin-top:22px;
+  font-size:1.25em;font-weight:600
+}
 .submenu{max-height:0;overflow:hidden;transition:max-height .3s ease;margin-left:10px}
 .menu h3:hover+.submenu,
 .menu h3:focus+.submenu,
 .submenu:hover{max-height:300px}
-.menu a{display:block;margin:6px 0;color:#083b82;text-decoration:none}
+.menu a{
+  display:block;margin:8px 0;color:#083b82;
+  text-decoration:none;font-size:1.05em
+}
 
 .preview{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.5s}
 .preview.active{opacity:1}
@@ -67,6 +73,12 @@ body.industry header{
         <a href="molecular-biology.html" data-img="bmr">Molecular Biology</a>
       </div>
 
+      <h3 tabindex="0">Technologics Division</h3>
+      <div class="submenu">
+        <a href="#" data-img="consulting">AI Platforms</a>
+        <a href="#" data-img="consulting">Data Engineering</a>
+      </div>
+
       <h3 tabindex="0">Communications Division</h3>
       <div class="submenu">
         <a href="publications.html" data-img="writing">Publications</a>
@@ -86,6 +98,7 @@ body.industry header{
   <div class="right">
     <div class="preview active" id="bmr" style="background-image:url('/images/BMR_Headshot.jpg')"></div>
     <div class="preview" id="writing" style="background-image:url('/images/writing.jpg')"></div>
+    <div class="preview" id="consulting" style="background-image:url('/images/consulting.jpg')"></div>
   </div>
 
 </div>
