@@ -8,7 +8,7 @@
 <style>
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#0a2540}
 header{
-  height:16vh; /* was 32vh */
+  height:16vh;
   background:
     url("/images/dna-header.svg"),
     linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
@@ -124,7 +124,7 @@ function applyMode(m){
   document.body.classList.toggle("industry",m==="industry");
   btn.textContent=m==="research"?"Industry View":"Research View";
   document.getElementById("tagline").textContent=
-    m==="research"?"Leading through passion":"Engineering the future of medicine";
+    m==="research"?"Leading through passion":"Built from discovery.";
   localStorage.setItem("tdkMode",m);
 }
 btn.onclick=()=>{mode=mode==="research"?"industry":"research";applyMode(mode);};
