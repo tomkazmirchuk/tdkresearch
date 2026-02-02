@@ -25,15 +25,21 @@ body.industry header{
 }
 #modeToggle{position:absolute;top:20px;right:20px;padding:8px 14px;border-radius:20px;
   background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.6);color:#fff;cursor:pointer}
+
 .main{display:flex;height:calc(100vh - 32vh)}
 .left{width:40%;padding:30px;overflow-y:auto}
 .right{width:60%;position:relative;background:#f4f7fb}
+
 .menu h3{cursor:pointer;color:#062f6a;margin-top:20px}
 .submenu{max-height:0;overflow:hidden;transition:max-height .3s ease;margin-left:10px}
-.menu h3:hover+.submenu{max-height:200px}
+.menu h3:hover+.submenu,
+.menu h3:focus+.submenu,
+.submenu:hover{max-height:300px}
 .menu a{display:block;margin:6px 0;color:#083b82;text-decoration:none}
+
 .preview{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.5s}
 .preview.active{opacity:1}
+
 .news{margin-top:30px;display:flex;gap:12px}
 .news div{flex:1;background:#f0f4fb;padding:14px;border-radius:10px;cursor:pointer;font-size:.9em}
 </style>
@@ -54,22 +60,22 @@ body.industry header{
   <div class="left">
     <div class="menu">
 
-      <h3>Biomedical Research Division</h3>
+      <h3 tabindex="0">Biomedical Research Division</h3>
       <div class="submenu">
         <a href="blood-work.html" data-img="bmr">Blood Work</a>
         <a href="theranostics.html" data-img="bmr">Theranostics</a>
         <a href="molecular-biology.html" data-img="bmr">Molecular Biology</a>
       </div>
 
-      <h3>Communications Division</h3>
+      <h3 tabindex="0">Communications Division</h3>
       <div class="submenu">
         <a href="publications.html" data-img="writing">Publications</a>
         <a href="posters.html" data-img="writing">Conference Abstracts & Posters</a>
         <a href="lectures.html" data-img="writing">Lectures & Seminars</a>
       </div>
 
-      <h3>Consulting & Contracting</h3>
-      <h3>Community Initiatives</h3>
+      <h3 tabindex="0">Consulting & Contracting</h3>
+      <h3 tabindex="0">Community Initiatives</h3>
       <h3><a href="contact.html">Contact</a></h3>
 
     </div>
