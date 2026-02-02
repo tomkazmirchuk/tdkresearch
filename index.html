@@ -7,7 +7,6 @@
 
 <style>
 body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#0a2540}
-
 header{
   height:16vh;
   background:
@@ -23,10 +22,7 @@ body.industry header{
   background:
     url("/images/circuit-header.svg"),
     linear-gradient(to right,#0a1f44,#123b78,#0a1f44);
-  background-size:cover,cover;
-  background-repeat:no-repeat,no-repeat;
 }
-
 #modeToggle{
   position:absolute;top:20px;right:20px;
   padding:8px 14px;border-radius:20px;
@@ -34,22 +30,17 @@ body.industry header{
   border:1px solid rgba(255,255,255,.6);
   color:#fff;cursor:pointer
 }
-
 .main{display:flex;height:calc(100vh - 16vh)}
 .left{width:40%;padding:30px;overflow-y:auto}
 .right{width:60%;position:relative;background:#f4f7fb}
-
 .menu h3{cursor:pointer;color:#062f6a;margin-top:26px;font-size:1.9em}
 .submenu{max-height:0;overflow:hidden;transition:max-height .3s}
 .menu h3:hover+.submenu,.submenu:hover{max-height:400px}
 .menu a{display:block;margin:10px 0;color:#083b82;text-decoration:none;font-size:1.35em}
-
 .preview{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:.5s}
 .preview.active{opacity:1}
-
 .news{margin-top:30px;display:flex;gap:12px}
 .news div{flex:1;background:#f0f4fb;padding:14px;border-radius:10px;cursor:pointer;font-size:.9em}
-
 .contact-wrap{margin-top:30px;background:#fafafa;padding:24px;border-radius:12px;
   box-shadow:0 10px 20px rgba(0,0,0,.06);display:none}
 .contact-wrap h2{margin-bottom:6px;color:#062f6a}
@@ -61,7 +52,6 @@ body.industry header{
 .contact-form button{
   margin-top:14px;background:#0a4ea1;color:#fff;border:none;
   padding:10px 22px;border-radius:20px;cursor:pointer}
-
 .footer{background:linear-gradient(to right,#062f6a,#0a4ea1,#083b82);
   color:#fff;text-align:center;padding:20px}
 </style>
