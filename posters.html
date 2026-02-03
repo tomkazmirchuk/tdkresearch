@@ -24,11 +24,19 @@ h1{text-align:center;color:#062f6a;margin-bottom:30px}
 /* Carousel */
 .carousel{
   position:relative;overflow:hidden;border-radius:12px;
-  background:#000;height:600px
+  background:#e6ebf3;height:520px
 }
 .track{display:flex;transition:transform .4s ease}
-.slide{min-width:100%;height:600px;background:#fff}
-.slide embed{width:100%;height:100%;border:none}
+.slide{
+  min-width:100%;height:520px;
+  display:flex;align-items:center;justify-content:center
+}
+.slide img{
+  max-width:90%;max-height:90%;
+  object-fit:contain;cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+  border-radius:6px;background:#fff
+}
 
 .nav{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -37,6 +45,7 @@ h1{text-align:center;color:#062f6a;margin-bottom:30px}
 }
 .prev{left:10px}.next{right:10px}
 
+/* Viewer */
 .viewer{
   position:fixed;inset:0;background:rgba(0,0,0,.7);
   display:none;align-items:center;justify-content:center;
@@ -76,7 +85,6 @@ function move(dir){
   index=(index+dir+slides.length)%slides.length;
   track.style.transform=`translateX(-${index*100}%)`;
 }
-
 document.querySelector(".next").onclick=()=>move(1);
 document.querySelector(".prev").onclick=()=>move(-1);
 
@@ -100,32 +108,26 @@ fetch("/data/data.json").then(r=>r.json()).then(data=>{
     grid.appendChild(div);
   });
 
-  /* LOAD ABSTRACT PDFs */
-const abstracts = [
-  {img:"abstract1.jpg", pdf:"abstract1.pdf"},
-  {img:"abstract2.jpg", pdf:"abstract2.pdf"},
-  {img:"abstract3.jpg", pdf:"abstract3.pdf"},
-  {img:"abstract4.jpg", pdf:"abstract4.pdf"},
-  {img:"abstract5.jpg", pdf:"abstract5.pdf"},
-  {img:"abstract6.jpg", pdf:"abstract6.pdf"},
-  {img:"abstract7.jpg", pdf:"abstract7.pdf"},
-  {img:"abstract8.jpg", pdf:"abstract8.pdf"},
-  {img:"abstract9.jpg", pdf:"abstract9.pdf"},
-  {img:"abstract10.jpg", pdf:"abstract10.pdf"},
-  {img:"abstract11.jpg", pdf:"abstract11.pdf"}
-];
+  /* Abstract carousel */
+  const abstracts=[
+    "abstract1","abstract2","abstract3","abstract4","abstract5",
+    "abstract6","abstract7","abstract8","abstract9","abstract10","abstract11"
+  ];
 
-abstracts.forEach(a=>{
-  const s=document.createElement("div");
-  s.className="slide";
-  s.innerHTML=`<img src="/abstracts/${a.img}" style="width:100%;height:100%;object-fit:contain;cursor:pointer">`;
-  s.onclick=()=>{
-    document.getElementById("frame").src="/abstracts/"+a.pdf;
-    document.getElementById("viewer").style.display="flex";
-  };
-  track.appendChild(s);
-});
-
+  abstracts.forEach(name=>{
+    const s=document.createElement("div");
+    s.className="slide";
+    s.innerHTML=`
+      <img src="/abstracts/${name}.jpg"
+           onerror="this.src='/images/pdf-placeholder.png'"
+           alt="${name}">
+    `;
+    s.onclick=()=>{
+      document.getElementById("frame").src="/abstracts/"+name+".pdf";
+      document.getElementById("viewer").style.display="flex";
+    };
+    track.appendChild(s);
+  });
 });
 </script>
 
