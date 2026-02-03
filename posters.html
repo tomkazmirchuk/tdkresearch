@@ -102,17 +102,30 @@ fetch("/data/data.json").then(r=>r.json()).then(data=>{
 
   /* LOAD ABSTRACT PDFs */
 const abstracts = [
-  "abstract1.pdf","abstract2.pdf","abstract3.pdf","abstract4.pdf","abstract5.pdf",
-  "abstract6.pdf","abstract7.pdf","abstract8.pdf","abstract9.pdf","abstract10.pdf","abstract11.pdf"
+  {img:"abstract1.jpg", pdf:"abstract1.pdf"},
+  {img:"abstract2.jpg", pdf:"abstract2.pdf"},
+  {img:"abstract3.jpg", pdf:"abstract3.pdf"},
+  {img:"abstract4.jpg", pdf:"abstract4.pdf"},
+  {img:"abstract5.jpg", pdf:"abstract5.pdf"},
+  {img:"abstract6.jpg", pdf:"abstract6.pdf"},
+  {img:"abstract7.jpg", pdf:"abstract7.pdf"},
+  {img:"abstract8.jpg", pdf:"abstract8.pdf"},
+  {img:"abstract9.jpg", pdf:"abstract9.pdf"},
+  {img:"abstract10.jpg", pdf:"abstract10.pdf"},
+  {img:"abstract11.jpg", pdf:"abstract11.pdf"}
 ];
 
+abstracts.forEach(a=>{
+  const s=document.createElement("div");
+  s.className="slide";
+  s.innerHTML=`<img src="/abstracts/${a.img}" style="width:100%;height:100%;object-fit:contain;cursor:pointer">`;
+  s.onclick=()=>{
+    document.getElementById("frame").src="/abstracts/"+a.pdf;
+    document.getElementById("viewer").style.display="flex";
+  };
+  track.appendChild(s);
+});
 
-  abstracts.forEach(f=>{
-    const s=document.createElement("div");
-    s.className="slide";
-    s.innerHTML=`<embed src="/abstracts/${f}">`;
-    track.appendChild(s);
-  });
 });
 </script>
 
