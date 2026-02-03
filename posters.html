@@ -6,70 +6,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{font-family:Arial;background:#f4f7fb;margin:0;padding:40px}
-h1{text-align:center;color:#062f6a;margin-bottom:30px}
+body{font-family:Arial;background:#f4f7fb;margin:0;padding:30px}
+h1{text-align:center;color:#062f6a;margin-bottom:20px}
 
-.section{margin-bottom:60px}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{
-  background:#fff;border-radius:12px;
-  box-shadow:0 8px 16px rgba(0,0,0,.08);
-  padding:14px;cursor:pointer
+.split{
+  display:flex;
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
 }
-.card img{width:100%;height:300px;object-fit:contain}
-.card h3{margin:8px 0 2px;font-size:1em}
-.card small{color:#777}
 
-/* Carousel */
+/* framed preview */
+.frame{
+  background:#e9eef7;
+  padding:5%;
+  border-radius:16px;
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+}
+
+.left{flex:0.6}
+.right{flex:0.4}
+
 .carousel{
-  position:relative;overflow:hidden;border-radius:12px;
-  background:#e6ebf3;height:520px
+  position:relative;
+  overflow:hidden;
+  height:520px;
 }
 .track{display:flex;transition:transform .4s ease}
 .slide{
-  min-width:100%;height:520px;
-  display:flex;align-items:center;justify-content:center
+  min-width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .slide img{
-  max-width:90%;max-height:90%;
-  object-fit:contain;cursor:pointer;
-  box-shadow:0 10px 20px rgba(0,0,0,.15);
-  border-radius:6px;background:#fff
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  cursor:pointer;
+  background:#fff;
+  border-radius:6px;
 }
 
 .nav{
-  position:absolute;top:50%;transform:translateY(-50%);
-  background:rgba(0,0,0,.4);color:white;border:none;
-  font-size:30px;padding:10px 16px;cursor:pointer;z-index:10
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.4);
+  color:white;
+  border:none;
+  font-size:26px;
+  padding:10px 14px;
+  cursor:pointer;
+  z-index:10
 }
 .prev{left:10px}.next{right:10px}
 
-/* Viewer */
+/* viewer */
 .viewer{
-  position:fixed;inset:0;background:rgba(0,0,0,.7);
-  display:none;align-items:center;justify-content:center;
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
 }
-.viewer iframe{width:80%;height:90%;border:none;background:white}
+.viewer iframe{
+  width:85%;
+  height:90%;
+  background:#fff;
+  border:none;
+}
 </style>
 </head>
 
 <body>
 
-<h1>Conference Posters & Abstracts</h1>
+<h1>Conference Abstracts & Posters</h1>
 
-<div class="section">
-  <h2>Posters</h2>
-  <div class="grid" id="posterGrid"></div>
-</div>
+<div class="split">
 
-<div class="section">
-  <h2>Abstracts</h2>
-  <div class="carousel">
-    <button class="nav prev">&#10094;</button>
-    <div class="track" id="abstractTrack"></div>
-    <button class="nav next">&#10095;</button>
+  <!-- LEFT: ABSTRACTS -->
+  <div class="left">
+    <h2>Abstracts</h2>
+    <div class="frame">
+      <div class="carousel">
+        <button class="nav prev" onclick="moveAbs(-1)">&#10094;</button>
+        <div class="track" id="absTrack"></div>
+        <button class="nav next" onclick="moveAbs(1)">&#10095;</button>
+      </div>
+    </div>
   </div>
+
+  <!-- RIGHT: POSTERS -->
+  <div class="right">
+    <h2>Posters</h2>
+    <div class="frame">
+      <div class="carousel">
+        <button class="nav prev" onclick="movePost(-1)">&#10094;</button>
+        <div class="track" id="postTrack"></div>
+        <button class="nav next" onclick="movePost(1)">&#10095;</button>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="viewer" id="viewer" onclick="this.style.display='none'">
@@ -77,56 +116,49 @@ h1{text-align:center;color:#062f6a;margin-bottom:30px}
 </div>
 
 <script>
-let index=0;
-const track=document.getElementById("abstractTrack");
+let ai=0,pi=0;
 
-function move(dir){
-  const slides=document.querySelectorAll(".slide");
-  index=(index+dir+slides.length)%slides.length;
-  track.style.transform=`translateX(-${index*100}%)`;
+function moveAbs(d){
+  const s=document.querySelectorAll("#absTrack .slide");
+  ai=(ai+d+s.length)%s.length;
+  document.getElementById("absTrack").style.transform=`translateX(-${ai*100}%)`;
 }
-document.querySelector(".next").onclick=()=>move(1);
-document.querySelector(".prev").onclick=()=>move(-1);
+function movePost(d){
+  const s=document.querySelectorAll("#postTrack .slide");
+  pi=(pi+d+s.length)%s.length;
+  document.getElementById("postTrack").style.transform=`translateX(-${pi*100}%)`;
+}
 
 fetch("/data/data.json").then(r=>r.json()).then(data=>{
-  const grid=document.getElementById("posterGrid");
 
+  /* posters */
   data.posters.forEach(p=>{
-    const div=document.createElement("div");
-    div.className="card";
-    div.innerHTML=`
-      <img src="${p.image}">
-      <h3>${p.title}</h3>
-      <small>${p.year}</small>
-    `;
-    div.onclick=()=>{
+    const s=document.createElement("div");
+    s.className="slide";
+    s.innerHTML=`<img src="${p.image}">`;
+    s.onclick=()=>{
       if(p.pdf){
         document.getElementById("frame").src=p.pdf;
         document.getElementById("viewer").style.display="flex";
       }
     };
-    grid.appendChild(div);
+    document.getElementById("postTrack").appendChild(s);
   });
 
-  /* Abstract carousel */
+  /* abstracts */
   const abstracts=[
     "abstract1","abstract2","abstract3","abstract4","abstract5",
     "abstract6","abstract7","abstract8","abstract9","abstract10","abstract11"
   ];
-
-  abstracts.forEach(name=>{
+  abstracts.forEach(a=>{
     const s=document.createElement("div");
     s.className="slide";
-    s.innerHTML=`
-      <img src="/abstracts/${name}.png"
-           onerror="this.src='/images/pdf-placeholder.png'"
-           alt="${name}">
-    `;
+    s.innerHTML=`<img src="/abstracts/${a}.png">`;
     s.onclick=()=>{
-      document.getElementById("frame").src="/abstracts/"+name+".pdf";
+      document.getElementById("frame").src="/abstracts/"+a+".pdf";
       document.getElementById("viewer").style.display="flex";
     };
-    track.appendChild(s);
+    document.getElementById("absTrack").appendChild(s);
   });
 });
 </script>
