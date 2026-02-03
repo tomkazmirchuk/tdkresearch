@@ -101,10 +101,11 @@ fetch("/data/data.json").then(r=>r.json()).then(data=>{
   });
 
   /* LOAD ABSTRACT PDFs */
-  const abstracts = [
-    "abs1.pdf","abs2.pdf","abs3.pdf","abs4.pdf","abs5.pdf",
-    "abs6.pdf","abs7.pdf","abs8.pdf","abs9.pdf","abs10.pdf","abs11.pdf"
-  ];
+const abstracts = [
+  "abstract1.pdf","abstract2.pdf","abstract3.pdf","abstract4.pdf","abstract5.pdf",
+  "abstract6.pdf","abstract7.pdf","abstract8.pdf","abstract9.pdf","abstract10.pdf","abstract11.pdf"
+];
+
 
   abstracts.forEach(f=>{
     const s=document.createElement("div");
